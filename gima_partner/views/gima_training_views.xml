@@ -1,0 +1,250 @@
+<odoo>
+    <!-- <record id="view_training_tree_custom" model="ir.ui.view">
+        <field name="name">training.tree</field>
+        <field name="model">gima.training</field>
+        <field name="arch" type="xml">
+            <tree string="Training">
+                <field name="partner_id"/>
+                <field name="type"/>
+                <field name="date_of_issue"/>
+                <field name="expiration_date"/>
+                <field name="state" widget="badge" decoration-success="state == 'valid'"
+                       decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_training_tree" model="ir.ui.view">
+        <field name="name">training.tree</field>
+        <field name="model">gima.training</field>
+        <field name="arch" type="xml">
+            <tree string="training">
+                <field name="partner_id"/>
+                <field name="type"/>
+                <field name="date_of_issue"/>
+                <field name="expiration_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_training_search" model="ir.ui.view">
+        <field name="name">gima.training.search</field>
+        <field name="model">gima.training</field>
+        <field name="arch" type="xml">
+            <search string="Training Search">
+                <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+            </search>
+        </field>
+    </record> -->
+
+    <record id="action_view_training" model="ir.actions.act_window">
+        <field name="name">Training</field>
+        <field name="res_model">gima.training</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="search_view_id" ref="view_training_search"/>
+        <field name="context">{'search_default_group_by_type': True}</field> -->
+    </record>
+
+    <menuitem id="gima_training_menu_config"
+              name="Gima Training"
+              parent="contacts.menu_contacts"
+              action="action_view_training"
+              sequence="5"/>
+
+    <template id="portal_layout_courses" name="Portal Layout">
+        <t t-call="portal.frontend_layout">
+            <t t-set="is_portal" t-value="True"/>
+
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container pt-3">
+                    <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
+                        <h3 class="my-3">My Courses</h3>
+                    </div>
+                    <t t-out="0"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_training" name="My Courses">
+        <t t-call="gima_partner.portal_layout_courses">
+            <div class="row g-2">
+                <!-- Prima riga con due colonne -->
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon" t-value="'/gima_partner/static/src/img/work_safety_icon.svg'"/>
+                            <t t-set="title">Work Safety Courses</t>
+                            <t t-set="text">Learn about workplace safety protocols to minimize risks</t>
+                            <t t-set="url" t-value="'/my/company_training/work_safety'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'work_safety'"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon"
+                               t-value="'/gima_partner/static/src/img/equipment_and_construction_icon.svg'"/>
+                            <t t-set="title">Equipment and Construction Site Safety Courses</t>
+                            <t t-set="text">Master the safe handling of equipment and construction sites</t>
+                            <t t-set="url" t-value="'/my/company_training/equipment_safety'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'equipment_safety'"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2">
+                <!-- Seconda riga con due colonne -->
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon" t-value="'/gima_partner/static/src/img/work_security_course_icon.svg'"/>
+                            <t t-set="title">ECM Courses</t>
+                            <t t-set="text">Stay updated on professional development through ECM courses</t>
+                            <t t-set="url" t-value="'/my/company_training/ecm'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'ecm'"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>
+                            <t t-set="title">HACCP Courses</t>
+                            <t t-set="text">Understand the key principles of food safety with HACCP training</t>
+                            <t t-set="url" t-value="'/my/company_training/haccp'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'haccp'"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-2">
+                <!-- Terza riga con un elemento a larghezza completa -->
+                <div class="col-12">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon" t-value="'/gima_partner/static/src/img/privacy_icon.svg'"/>
+                            <t t-set="title">Privacy Courses</t>
+                            <t t-set="text">Learn how to ensure privacy and data security</t>
+                            <t t-set="url" t-value="'/my/company_training/privacy'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'privacy'"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+
+
+        </t>
+    </template>
+
+    <template id="portal_my_courses" name="My Courses">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Courses</t>
+            </t>
+            <t t-call="gima_partner.portal_courses_list"/>
+        </t>
+    </template>
+
+    <template id="portal_courses_list">
+        <table class="table table-sm">
+            <thead class="bg-100" style="border: 2px solid #2f2f6d;">
+                <tr class="active">
+                    <th class="text-left">Macro Group Course</th>
+                    <th class="text-left">Course</th>
+                    <th class="text-center">Partner</th>
+                    <th class="text-center">Macro Group Course</th>
+                    <th class="text-center">Duration</th>
+                    <th class="text-center">Start date</th>
+                    <th class="text-center">End date</th>
+                    <th class="text-center">State</th>
+                    <th class="text-center">Download Certificate</th>
+                    <th/>
+                </tr>
+            </thead>
+            <t t-foreach="grouped_course" t-as="courses">
+                <tbody>
+                    <tr t-if="groupby in ('all', 'type')">
+                        <th class="text-start" colspan="12"
+                            style="background-color: #F3F2F2; color: #2f2f6d; font-weight: bold !important;'">
+                            <t t-if="'9001' in certifications['type_key']">
+                                <img src="/gima_partner/static/src/img/iso_icon.svg"
+                                     style="height: 40px; margin-left: 5px;"/>
+                            </t>
+                            <t t-if="'fgas' in certifications['type_key']">
+                                <img src="/gima_partner/static/src/img/f_gas_certification.png"
+                                     style="height: 40px; margin-left: 5px;"/>
+                            </t>
+                            <em class="font-weight-normal" t-out="certifications['type']"/>
+                        </th>
+                    </tr>
+                    <t t-foreach="certifications['certifications']" t-as="certification">
+                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'background-color: #8B0000; color: white; font-weight: bold !important;' or ''}">
+                            <td class="text-left">
+                                <t t-out="certification.certificate_number"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="certification.partner_id.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="certification.type"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="certification.date_of_issue"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="certification.expiration_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-if="certification.state == 'valid'" class="badge rounded-pill text-bg-success">
+                                    Valid
+                                </span>
+                                <span t-if="certification.state == 'expiring'"
+                                      class="badge rounded-pill text-bg-warning">
+                                    Expiring
+                                </span>
+                                <span t-if="certification.state == 'expired'" class="badge rounded-pill text-bg-danger">
+                                    Expired
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <t t-if="certification.attachment_ids">
+                                    <a t-attf-href="/download/certificate/{{ certification.id }}">
+                                        <i class="fa fa-download" aria-hidden="true"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    No certificates found
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="certification.state == 'expiring'">
+                                    <i role="alert" class="fa fa-exclamation-triangle text-warning mx-2"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+                <t t-foreach="range(2)" t-as="row">
+                    <tr>
+                        <t t-foreach="range(8)" t-as="cell">
+                            <td/>
+                        </t>
+                    </tr>
+                </t>
+            </t>
+        </table>
+    </template>
+</odoo>

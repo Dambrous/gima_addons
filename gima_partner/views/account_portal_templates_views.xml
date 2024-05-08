@@ -1,0 +1,49 @@
+<odoo>
+
+    <template id="portal_my_home" inherit_id="portal.portal_my_home"
+              priority="100">
+        <xpath expr="//div[@id='portal_client_category']" position="attributes">
+            <attribute name="groups">base.group_user</attribute>
+        </xpath>
+        <xpath expr="//div[@id='portal_vendor_category']" position="attributes">
+            <attribute name="groups">base.group_user</attribute>
+        </xpath>
+        <xpath expr="//div[@id='portal_common_category']/t[1]" position="attributes">
+            <attribute name="groups">base.group_user</attribute>
+        </xpath>
+        <xpath expr="//div[@id='portal_alert_category']" position="attributes">
+            <attribute name="groups">base.group_user</attribute>
+        </xpath>
+        <xpath expr="//div[@id='portal_common_category']" position="before">
+            <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
+                <t t-call="portal.portal_docs_entry" t-if="False"/>
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/gima_partner/static/src/img/certificate_icon.svg'"/>
+                    <t t-set="title">Company and Employee Certifications</t>
+                    <t t-set="text">Consult the register of certifications provided by GIMA Progetti for your company
+                        and your staff.
+                    </t>
+                    <t t-set="url" t-value="'/my/company_certifications'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+            </div>
+            <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
+                <t t-call="portal.portal_docs_entry" t-if="False"/>
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/gima_partner/static/src/img/training_icon.svg'"/>
+                    <t t-set="title">Employee Training</t>
+                    <t t-set="text">Monitor the certifications of the company and your employees.</t>
+                    <t t-set="url" t-value="'/my/company_training'"/>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <template id="portal_docs_entry" inherit_id="portal.portal_docs_entry"
+              priority="100">
+        <xpath expr="//div[1]" position="attributes">
+            <attribute name="t-att-class">'o_portal_index_card col-12' + ('' if config_card else 'd-none ')</attribute>
+        </xpath>
+
+    </template>
+</odoo>

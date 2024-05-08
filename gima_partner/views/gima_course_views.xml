@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="action_view_courses" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">gima.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="gima_courses_menu_config"
+              name="Gima Courses"
+              parent="contacts.menu_contacts"
+              action="action_view_courses"
+              sequence="4"/>
+
+
+</odoo>

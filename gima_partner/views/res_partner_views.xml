@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page string="Training">
+                    <group string="Training">
+                        <field name="gima_training_ids"/>
+                    </group>
+                </page>
+                <page string="Certifications">
+                    <span invisible="is_company != True">
+                        <group string="Company Certifications">
+                        </group>
+                        <field name="gima_certifications_ids"/>
+                    </span>
+                    <span invisible="is_company != True">
+                        <group string="Employee Certifications">
+                        </group>
+                        <button name="action_view_certifications" icon="oi-arrow-right"
+                                type="object" string="View Certifications" class="btn-link" nolabel="1"/>
+                    </span>
+                    <span invisible="is_company == True">
+                        <group string="Valid certifications">
+                        </group>
+                        <field name="gima_certifications_ids"/>
+                    </span>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
