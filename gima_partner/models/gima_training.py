@@ -10,14 +10,24 @@ class GimaTraining(models.Model):
     end_date = fields.Date(string="End Date", required=True)
     location = fields.Char(string="Location", required=True)
     course_id = fields.Many2one("gima.course", required=True)
-    type_course_id = fields.Selection(string="Macro Group Course", related="course_id.course_type")
+    type_course_id = fields.Selection(
+        string="Macro Group Course", related="course_id.course_type"
+    )
     duration = fields.Integer(string="Duration", related="course_id.duration")
-    type_duration = fields.Selection(string="Duration Type", related="course_id.type_duration")
-    certificate_course_attachment = fields.Binary(string="Certificate Course Attachment")
-    state = fields.Selection([('valid', 'Valid'), ('expiring', 'Expiring'), ('expired', 'Expired')])
+    type_duration = fields.Selection(
+        string="Duration Type", related="course_id.type_duration"
+    )
+    certificate_course_attachment = fields.Binary(
+        string="Certificate Course Attachment"
+    )
+    state = fields.Selection(
+        [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired")]
+    )
 
-    @api.depends('partner_id', "course_id")
+    @api.depends("partner_id", "course_id")
     def _compute_gima_course(self):
         for training in self:
             if training.partner_id and training.course_id:
-                training.name = training.course_id.name + ": " + training.partner_id.name
+                training.name = (
+                    training.course_id.name + ": " + training.partner_id.name
+                )

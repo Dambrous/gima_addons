@@ -50,7 +50,7 @@
         </field>
     </record>
 
-    <template id="portal_my_certifications" name="My Certifications">
+    <template id="portal_view_certifications" name="My Certifications">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -60,7 +60,7 @@
             <div t-if="not grouped_certifications" class="alert alert-warning" role="alert">
                 There are currently no certifications for your company.
             </div>
-            <t t-call="gima_partner.portal_certification_list"/>
+            <t t-if="grouped_certifications" t-call="gima_partner.portal_certification_list"/>
         </t>
     </template>
 
@@ -87,6 +87,53 @@
               parent="contacts.menu_contacts"
               action="action_view_certifications"
               sequence="4"/>
+
+    <template id="portal_layout_certifications" name="Portal Layout">
+        <t t-call="portal.frontend_layout">
+            <t t-set="is_portal" t-value="True"/>
+
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container pt-3">
+                    <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
+                        <h3 class="my-3">My Certifications</h3>
+                    </div>
+                    <t t-out="0"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_certifications" name="My Courses">
+        <t t-call="gima_partner.portal_layout_certifications">
+            <div class="row g-2 mb-5">
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon" t-value="'/gima_partner/static/src/img/f_gas_certification_small.png'"/>
+                            <t t-set="title">F-GAS Portal</t>
+                            <t t-set="text">View the report of the fgas certifications of your company and your employees</t>
+                            <t t-set="url" t-value="'/my/company_certification/fgas'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'work_safety'"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="o_portal_category row g-2 mt-3">
+                        <t t-call="portal.portal_docs_entry">
+                            <t t-set="icon"
+                               t-value="'/gima_partner/static/src/img/iso_icon.svg'"/>
+                            <t t-set="title">ISO 9001 Portal</t>
+                            <t t-set="text">View your company's ISO 9001 certification report</t>
+                            <t t-set="url" t-value="'/my/company_certification/iso_9001'"/>
+                            <t t-set="config_card" t-value="True"/>
+                            <t t-set="course_type" t-value="'equipment_safety'"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
 
     <template id="portal_certification_list">
         <table class="table">
