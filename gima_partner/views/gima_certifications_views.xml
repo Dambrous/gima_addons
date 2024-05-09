@@ -106,31 +106,37 @@
     <template id="portal_my_certifications" name="My Courses">
         <t t-call="gima_partner.portal_layout_certifications">
             <div class="row g-2 mb-5">
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon" t-value="'/gima_partner/static/src/img/f_gas_certification_small.png'"/>
-                            <t t-set="title">F-GAS Portal</t>
-                            <t t-set="text">View the report of the fgas certifications of your company and your employees</t>
-                            <t t-set="url" t-value="'/my/company_certification/fgas'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'work_safety'"/>
-                        </t>
+                <t t-if="user_id.is_certified_fgas">
+                    <div class="col-md-6">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/f_gas_certification_small.png'"/>
+                                <t t-set="title">F-GAS Portal</t>
+                                <t t-set="text">View the report of the fgas certifications of your company and your
+                                    employees
+                                </t>
+                                <t t-set="url" t-value="'/my/company_certification/fgas'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'work_safety'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon"
-                               t-value="'/gima_partner/static/src/img/iso_icon.svg'"/>
-                            <t t-set="title">ISO 9001 Portal</t>
-                            <t t-set="text">View your company's ISO 9001 certification report</t>
-                            <t t-set="url" t-value="'/my/company_certification/iso_9001'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'equipment_safety'"/>
-                        </t>
+                </t>
+                <t t-if="user_id.is_certified_iso_9001">
+                    <div class="col-md-6">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon"
+                                   t-value="'/gima_partner/static/src/img/iso_icon.svg'"/>
+                                <t t-set="title">ISO 9001 Portal</t>
+                                <t t-set="text">View your company's ISO 9001 certification report</t>
+                                <t t-set="url" t-value="'/my/company_certification/iso_9001'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'equipment_safety'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
+                </t>
             </div>
         </t>
     </template>
@@ -172,7 +178,7 @@
                     </tr>
                     <t t-set="first_row" t-value="True"/>
                     <t t-foreach="certifications['certifications']" t-as="certification">
-                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'background-color: #8B0000; color: white; font-weight: bold !important;' or ''}">
+                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'color: #8B0000; font-weight: bold !important;' or ''}">
                             <t t-if="first_row">
                                 <td class="text-left">
                                     <img src="/gima_partner/static/src/img/arrow_right_blue.svg"

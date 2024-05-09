@@ -15,18 +15,21 @@
             <attribute name="groups">base.group_user</attribute>
         </xpath>
         <xpath expr="//div[@id='portal_common_category']" position="before">
-            <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
-                <t t-call="portal.portal_docs_entry" t-if="False"/>
-                <t t-call="portal.portal_docs_entry">
-                    <t t-set="icon" t-value="'/gima_partner/static/src/img/certificate_icon.svg'"/>
-                    <t t-set="title">Company and Employee Certifications</t>
-                    <t t-set="text">Consult the register of certifications provided by GIMA Progetti for your company
-                        and your staff.
+            <t t-if="user_id.is_certified_fgas or user_id.is_certified_iso_9001">
+                <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
+                    <t t-call="portal.portal_docs_entry" t-if="False"/>
+                    <t t-call="portal.portal_docs_entry">
+                        <t t-set="icon" t-value="'/gima_partner/static/src/img/certificate_icon.svg'"/>
+                        <t t-set="title">Company and Employee Certifications</t>
+                        <t t-set="text">Consult the register of certifications provided by GIMA Progetti for your
+                            company
+                            and your staff.
+                        </t>
+                        <t t-set="url" t-value="'/my/company_certifications'"/>
+                        <t t-set="config_card" t-value="True"/>
                     </t>
-                    <t t-set="url" t-value="'/my/company_certifications'"/>
-                    <t t-set="config_card" t-value="True"/>
-                </t>
-            </div>
+                </div>
+            </t>
             <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
                 <t t-call="portal.portal_docs_entry" t-if="False"/>
                 <t t-call="portal.portal_docs_entry">
