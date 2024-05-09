@@ -21,10 +21,6 @@
                     <t t-call="portal.portal_docs_entry">
                         <t t-set="icon" t-value="'/gima_partner/static/src/img/certificate_icon.svg'"/>
                         <t t-set="title">Company and Employee Certifications</t>
-                        <t t-set="text">Consult the register of certifications provided by GIMA Progetti for your
-                            company
-                            and your staff.
-                        </t>
                         <t t-set="url" t-value="'/my/company_certifications'"/>
                         <t t-set="config_card" t-value="True"/>
                     </t>
@@ -35,7 +31,6 @@
                 <t t-call="portal.portal_docs_entry">
                     <t t-set="icon" t-value="'/gima_partner/static/src/img/training_icon.svg'"/>
                     <t t-set="title">Employee Training</t>
-                    <t t-set="text">Monitor the certifications of the company and your employees.</t>
                     <t t-set="url" t-value="'/my/company_training'"/>
                     <t t-set="config_card" t-value="True"/>
                 </t>
