@@ -8,6 +8,7 @@ from odoo.tools import groupby as groupbyeleme
 from operator import itemgetter
 import base64
 from odoo.osv.expression import OR, AND
+from odoo.tools.translate import _
 
 
 class GimaPortal(portal.CustomerPortal):
@@ -174,6 +175,8 @@ class GimaPortal(portal.CustomerPortal):
             if type_key and "company" in type_key:
                 type_group["priority"] = 1
         types_group_list = sorted(types_group_list, key=lambda x: x["priority"])
+        for certification in types_group_list:
+            certification['type'] = _._get_translation(certification['type'])
         values.update(
             {
                 "grouped_certifications": types_group_list,

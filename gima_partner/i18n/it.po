@@ -1,0 +1,544 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gima_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-09 19:34+0000\n"
+"PO-Revision-Date: 2024-05-09 19:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+msgid "<span class=\"d-none d-md-inline\">Certification #</span>"
+msgstr "<span class=\"d-none d-md-inline\">N°</span>"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "All"
+msgstr "Tutte"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__attachment_ids
+msgid "Attachments"
+msgstr "Allegati"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__certificate_attachment
+msgid "Certificate Attachment"
+msgstr "Allegato attestato"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__certificate_course_attachment
+msgid "Certificate Course Attachment"
+msgstr "Attestato corso di certificazione"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__certificate_number
+msgid "Certificate Number"
+msgstr "Numero attestato"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Certification Number"
+msgstr "Numero di certificazione"
+
+#. module: gima_partner
+#: model:ir.actions.act_window,name:gima_partner.action_view_certifications
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_form
+#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree
+#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree_custom
+msgid "Certifications"
+msgstr "Certificazioni"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_search
+msgid "Certifications Search"
+msgstr "Ricerca certificazioni"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_res_partner__is_certified_fgas
+#: model:ir.model.fields,field_description:gima_partner.field_res_users__is_certified_fgas
+msgid "Certified FGAS"
+msgstr "Patentino F-GAS"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_res_partner__is_certified_iso_9001
+#: model:ir.model.fields,field_description:gima_partner.field_res_users__is_certified_iso_9001
+msgid "Certified ISO 9001"
+msgstr "Certificato ISO 9001"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__9001_company_licence
+#: code:addons/gima_partner/controllers/portal.py:0
+msgid "Company Certification 9001"
+msgstr "Certificazione aziendale 9001"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+msgid "Company Certifications"
+msgstr "Certificazioni aziendali"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
+msgid "Company and Employee Certifications"
+msgstr "Certificati aziendali e dei dipendenti"
+
+#. module: gima_partner
+#: model:ir.model,name:gima_partner.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__course_id
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Course"
+msgstr "Corso"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__code
+msgid "Course Code"
+msgstr "Codice corso"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__course_icon
+msgid "Course Icon"
+msgstr "Icona corso"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__course_type
+msgid "Course Type"
+msgstr "Tipo corso"
+
+#. module: gima_partner
+#: model:ir.actions.act_window,name:gima_partner.action_view_courses
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
+msgid "Courses"
+msgstr "Corsi"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__create_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__create_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__create_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__create_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+msgid "Data of issue"
+msgstr "Data di emissione"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__expiration_date
+msgid "Date expiration"
+msgstr "Data di scadenza"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__maintenance_date
+msgid "Date maintenance"
+msgstr "Data di manutenzione"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__date_of_issue
+#, python-format
+msgid "Date of issue"
+msgstr "Data di emissione"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__type_duration__days
+msgid "Days"
+msgstr "Giorni"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__display_name
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__display_name
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Download Certificate"
+msgstr "Scarica attestato"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__duration
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__duration
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Duration"
+msgstr "Durata"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__type_duration
+msgid "Duration Type"
+msgstr "Tipo durata"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_type__ecm
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "ECM Courses"
+msgstr "Corsi ECM"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+msgid "Employee Certifications"
+msgstr "Certificazioni Dipendenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
+msgid "Employee Training"
+msgstr "Formazione dipendenti"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__end_date
+msgid "End Date"
+msgstr "Data di fine"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "End date"
+msgstr "Data di Scadenza"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_type__equipment_safety
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Equipment and Construction Site Safety Courses"
+msgstr "Corsi sicurezza attrezzature e cantiere"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+msgid "Expiration date"
+msgstr "Data di scadenza"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Expiration: 1 month"
+msgstr "Scadenza: 1 mese"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__expired
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__expired
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Expired"
+msgstr "Scaduto"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__expiring
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__expiring
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Expiring"
+msgstr "In Scadenza"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Expiring Date"
+msgstr "Data di Scadenza"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_company_licence
+#: code:addons/gima_partner/controllers/portal.py:0
+msgid "F-GAS Company Licence"
+msgstr "Certificazione aziendale F-GAS"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_individual_licence
+#: code:addons/gima_partner/controllers/portal.py:0
+msgid "F-GAS Individual Licence"
+msgstr "Patentino dipendente F-GAS"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
+msgid "F-GAS Portal"
+msgstr "Portale F-GAS"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_res_partner__gima_certifications_ids
+#: model:ir.model.fields,field_description:gima_partner.field_res_users__gima_certifications_ids
+#: model:ir.ui.menu,name:gima_partner.gima_certifications_menu_config
+msgid "Gima Certifications"
+msgstr "Certificazioni Gima"
+
+#. module: gima_partner
+#: model:ir.ui.menu,name:gima_partner.gima_courses_menu_config
+msgid "Gima Courses"
+msgstr "Corsi Gima"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_res_partner__gima_training_ids
+#: model:ir.model.fields,field_description:gima_partner.field_res_users__gima_training_ids
+#: model:ir.ui.menu,name:gima_partner.gima_training_menu_config
+msgid "Gima Training"
+msgstr "Formazione Gima"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_search
+msgid "Group by Type"
+msgstr "Raggruppa per tipologia"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_type__haccp
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "HACCP Courses"
+msgstr "Corsi HACCP"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__type_duration__hours
+msgid "Hours"
+msgstr "Ore"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__id
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__id
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__id
+msgid "ID"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
+msgid "ISO 9001 Portal"
+msgstr "Portale ISO 9001"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__write_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__write_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__write_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__write_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Learn about workplace safety protocols to minimize risks"
+msgstr ""
+"Apprendi i protocolli di sicurezza sul luogo di lavoro per minimizzare i "
+"rischi"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Learn how to ensure privacy and data security"
+msgstr "Apprendi come garantire la privacy e la sicurezza dei dati"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__location
+msgid "Location"
+msgstr "Posizione"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__type_course_id
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Macro Group Course"
+msgstr "Macro gruppo (corso)"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Master the safe handling of equipment and construction sites"
+msgstr "Padroneggia la sicura gestione di attrezzature e cantieri edili"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout_certifications
+msgid "My Certifications"
+msgstr "Le mie certificazioni"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout_courses
+msgid "My Courses"
+msgstr "I Miei Corsi"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__name
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "No certificates found"
+msgstr "Nessun certificato trovato"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "None"
+msgstr "Nessuno"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__partner_id
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__partner_id
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+#, python-format
+msgid "Partner"
+msgstr "Azienda/Dipendente"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_type__privacy
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Privacy Courses"
+msgstr "Corsi sulla Privacy"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Search in Certification"
+msgstr "Cerca tra le certificazioni"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Search in Partner"
+msgstr "Cerca tra i dipendenti"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__start_date
+msgid "Start Date"
+msgstr "Data di Inizio"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Start date"
+msgstr "Data di Inizio"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__state
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__state
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+#, python-format
+msgid "State"
+msgstr "Stato"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Stay updated on professional development through ECM courses"
+msgstr "Rimani aggiornato sullo sviluppo professionale attraverso corsi ECM"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
+msgid "There are currently no certifications for your company."
+msgstr "Attualmente non ci sono certificazioni per la tua azienda."
+
+#. module: gima_partner
+#: model:ir.actions.act_window,name:gima_partner.action_view_training
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+msgid "Training"
+msgstr "Formazione"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_partner/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#, python-format
+msgid "Type"
+msgstr "Tipologia"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__type
+msgid "Type Certification"
+msgstr "Tipologia certificazione"
+
+#. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_course__type_duration
+msgid "Type Duration"
+msgstr "Tipo durata"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Understand the key principles of food safety with HACCP training"
+msgstr "Comprendi i principi fondamentali della sicurezza alimentare"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__valid
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__valid
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
+msgid "Valid"
+msgstr "Valido"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+msgid "Valid certifications"
+msgstr "Certificazioni valide"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner_
+msgid "View Certifications"
+msgstr "Visualizza Certificazioni"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
+msgid ""
+"View the report of the fgas certifications of your company and your\n"
+"                                    employees"
+msgstr ""
+"Visualizza il report delle certificazioni F-GAS della tua azienda e dei tuoi\n"
+"                                    dipendenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
+msgid "View your company's ISO 9001 certification report"
+msgstr "Visualizza il report di certificazione ISO 9001 della tua azienda"
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_type__work_safety
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
+msgid "Work Safety Courses"
+msgstr "Corsi sulla Sicurezza sul Lavoro"
+
+#. module: gima_partner
+#: model:ir.model,name:gima_partner.model_gima_certifications
+msgid "gima.certifications"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model,name:gima_partner.model_gima_course
+msgid "gima.course"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model,name:gima_partner.model_gima_training
+msgid "gima.training"
+msgstr ""
