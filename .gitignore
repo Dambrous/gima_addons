@@ -1,0 +1,164 @@
+### Ignore generic temp file, undo files, etc...
+.~lock.*
+*.*~
+*.autosave
+*.sw[po]
+*.b[ac]k
+ssh_key
+*.tar.gz
+logs/
+
+# Odoo specific
+odoo.cfg
+odoo.conf
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+/.pytest_cache
+/.ruff_cache
+*$py.class
+# various virtualenv
+[.]venv/
+
+# C extensions
+*.so
+
+### Ansible specific
+*.retry
+# Translations
+*.mo
+
+### Pyton specific
+
+# Distribution / packaging
+.Python
+env/
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib64/
+parts/
+sdist/
+var/
+/include/
+/lib/
+/man/
+/share/
+/src
+*.egg-info/
+.installed.cfg
+*.egg
+*.eggs
+.pydevproject
+.project
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Pycharm
+.idea
+
+### Eclipse specific
+.settings/
+.properties
+.classpath
+
+### Sublime Specific
+# Cache files for Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+# Workspace files are user-specific
+*.sublime-workspace
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+
+### Visual Studio cache/options directory
+.vs/
+.vscode
+# Local History for Visual Studio Code
+.history/
+# Built Visual Studio Code Extensions
+*.vsix
+
+# OSX Files
+.DS_Store
+.AppleDouble
+.LSOverride
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Django stuff:
+*.log
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Sphinx documentation
+docs/_build/
+
+### WIndows Specific
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+# Dump file
+*.stackdump
+# Folder config file
+[Dd]esktop.ini
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+# Windows shortcuts
+*.lnk
+
+# Backup files
+*~
+*.swp
+
+# OCA rules
+!static/lib/
