@@ -33,19 +33,19 @@ class GimaPortal(portal.CustomerPortal):
             "none": {"input": "none", "label": _("None")},
             "type": {"input": "type", "label": _("Type")},
         }, {
-        "all": {"label": _("All"), "domain": []},
-        "expiration_1_month: ": {
-            "label": _("Expiration: 1 month"),
-            "domain": [
-                ("expiration_date", "!=", False),
-                (
-                    "expiration_date",
-                    "<=",
-                    (datetime.datetime.now() + relativedelta(months=2)).date(),
-                ),
-            ],
-        },
-    }, {
+            "all": {"label": _("All"), "domain": []},
+            "expiration_1_month: ": {
+                "label": _("Expiration: 1 month"),
+                "domain": [
+                    ("expiration_date", "!=", False),
+                    (
+                        "expiration_date",
+                        "<=",
+                        (datetime.datetime.now() + relativedelta(months=2)).date(),
+                    ),
+                ],
+            },
+        }, {
             "partner": {"input": "partner_id", "label": _("Search in Partner")},
             "certificate_number": {
                 "input": "certificate_number",
@@ -59,16 +59,16 @@ class GimaPortal(portal.CustomerPortal):
         return domain
 
     def _prepare_certifications_portal_rendering_values(
-        self,
-        page=1,
-        date_begin=None,
-        date_end=None,
-        sortby=None,
-        groupby=None,
-        filterby=None,
-        search_in=None,
-        search=None,
-        **kwargs,
+            self,
+            page=1,
+            date_begin=None,
+            date_end=None,
+            sortby=None,
+            groupby=None,
+            filterby=None,
+            search_in=None,
+            search=None,
+            **kwargs,
     ):
         model = "gima.certifications"
         GimaCertifications = request.env[model]
@@ -139,7 +139,7 @@ class GimaPortal(portal.CustomerPortal):
                 )
             domain = AND([domain, search_domain])
 
-        url = "/my/company_certification/"+str(kwargs.get("type_certification"))
+        url = "/my/company_certification/" + str(kwargs.get("type_certification"))
         pager_values = portal_pager(
             url=url,
             total=GimaCertifications.search_count(domain),
@@ -176,7 +176,8 @@ class GimaPortal(portal.CustomerPortal):
                 type_group["priority"] = 1
         types_group_list = sorted(types_group_list, key=lambda x: x["priority"])
         for certification in types_group_list:
-            certification['type'] = _._get_translation(certification['type'])
+            if certification.get('type'):
+                certification['type'] = _._get_translation(certification['type'])
         values.update(
             {
                 "grouped_certifications": types_group_list,
@@ -202,11 +203,12 @@ class GimaPortal(portal.CustomerPortal):
         auth="user",
         website=True,
     )
-    def my_certifications(self,):
+    def my_certifications(self, ):
         return request.render("gima_partner.portal_my_certifications")
 
     @http.route(
-        ["/my/company_certification/<type_certification>", "/my/company_certifications/<type_certification>/page/<int:page>"],
+        ["/my/company_certification/<type_certification>",
+         "/my/company_certifications/<type_certification>/page/<int:page>"],
         type="http",
         auth="user",
         website=True,
@@ -241,9 +243,9 @@ class GimaPortal(portal.CustomerPortal):
             filename += object.partner_id.name + " - "
         if model_name == "gima.certifications":
             filename += (
-                object.certificate_number
-                + " - "
-                + dict(object._fields["type"].selection).get(object.type)
+                    object.certificate_number
+                    + " - "
+                    + dict(object._fields["type"].selection).get(object.type)
             )
         if model_name == "gima.training":
             if object.course_id.code:
@@ -288,7 +290,7 @@ class GimaPortal(portal.CustomerPortal):
     # -------------------------- COURSES-TRAINING
 
     @http.route(["/my/company_training"], type="http", auth="user", website=True)
-    def my_training_home(self, **kw):
+    def my_training_home(self, **kwargs):
         values = self._prepare_portal_layout_values()
         return request.render("gima_partner.portal_my_training", values)
 
@@ -298,6 +300,199 @@ class GimaPortal(portal.CustomerPortal):
         auth="user",
         website=True,
     )
-    def my_training(self, **kw):
+    def my_training(self, **kwargs):
         values = self._prepare_portal_layout_values()
         return request.render("gima_partner.portal_my_courses", values)
+
+    # -------------------------- PROMOTER - PORTAL
+
+    def _get_training_searchbar_sortings(self):
+        return {
+            "course_id": {"label": _("Course"), "training": "course_id asc"},
+        }, {
+            "none": {"input": "none", "label": _("None")},
+            "partner_id": {"input": "partner_id", "label": _("Employee")},
+            "course_id": {"input": "course_id", "label": _("Course")}
+        }, {
+            "all": {"label": _("All"), "domain": []},
+            "expiration_1_month: ": {
+                "label": _("Expiration: 1 month"),
+                "domain": [
+                    ("expiration_date", "!=", False),
+                    (
+                        "expiration_date",
+                        "<=",
+                        (datetime.datetime.now() + relativedelta(months=1)).date(),
+                    ),
+                ],
+            },
+        }, {
+            "partner": {"input": "partner_id", "label": _("Search in Partner")},
+            # "certificate_number": {
+            #     "input": "certificate_number",
+            #     "label": _("Search in Certification"),
+            # },
+        }
+
+    def _prepare_company_employees_training_portal_rendering_values(
+            self,
+            page=1,
+            date_begin=None,
+            date_end=None,
+            sortby=None,
+            groupby=None,
+            filterby=None,
+            search_in=None,
+            search=None,
+            **kwargs,
+    ):
+        model = "gima.training"
+        GimaTraining = request.env[model]
+
+        if not sortby:
+            sortby = "course_id"
+        if not groupby:
+            groupby = "partner_id"
+        if not filterby:
+            filterby = "all"
+        if not search_in:
+            search_in = "partner_id"
+        company = request.env['res.partner'].sudo().browse(kwargs.get("company_id"))
+        values = self._prepare_portal_layout_values()
+        domain = self._prepare_certification_domain(company)
+        # company is a RES.PARTNER with is_company == True
+        searchbar_sortings, searchbar_groupby, searchbar_filters, searchbar_inputs = self._get_training_searchbar_sortings()
+
+        if filterby:
+            domain += searchbar_filters[filterby]["domain"]
+
+        type_group_by = searchbar_groupby.get(groupby, {})
+        if groupby in ("partner_id", "course_id"):
+            type_group_by = type_group_by.get("input")
+        else:
+            type_group_by = ""
+
+        sort_order = searchbar_sortings[sortby]["training"]
+
+        # search
+        if search and search_in:
+            search_domain = []
+            if search_in == "partner_id":
+                partners = (
+                    request.env["res.partner"]
+                    .sudo()
+                    .search([("name", "ilike", search)])
+                )
+                search_domain = OR(
+                    [search_domain, [("partner_id", "in", partners.ids)]]
+                )
+            if search_in == "content":
+                partners = (
+                    request.env["res.partner"]
+                    .sudo()
+                    .search([("name", "ilike", search)])
+                )
+                search_domain = OR(
+                    [
+                        search_domain,
+                        [
+                            "|",
+                            "|",
+                            ("name", "ilike", search),
+                            ("certificate_number", "ilike", search),
+                            ("partner_id", "in", partners.ids),
+                        ],
+                    ]
+                )
+            if search_in == "certificate_number":
+                search_domain = OR(
+                    [search_domain, [("certificate_number", "ilike", search)]]
+                )
+            domain = AND([domain, search_domain])
+
+        url = "/my/company_management/" + str(kwargs.get("company_id"))
+        pager_values = portal_pager(
+            url=url,
+            total=GimaTraining.sudo().search_count(domain),
+            page=page,
+            step=20,
+            url_args={
+                "sortby": sortby,
+                "search_in": search_in,
+                "search": search,
+                "groupby": groupby,
+                "filterby": filterby,
+            },
+        )
+
+        gima_employee_training = GimaTraining.sudo().search(
+            domain, order=sort_order, limit=20, offset=pager_values["offset"]
+        )
+        if type_group_by:
+            types_group_list = [
+                {
+                    "group_by": k.name,
+                    "trainings": GimaTraining.concat(*g),
+                }
+                for k, g in groupbyeleme(gima_employee_training, itemgetter(type_group_by))
+            ]
+        else:
+            types_group_list = [{"trainings": gima_employee_training}]
+
+        values.update(
+            {
+                "grouped_training": types_group_list,
+                "pager": pager_values,
+                "default_url": url,
+                "searchbar_sortings": searchbar_sortings,
+                "searchbar_groupby": searchbar_groupby,
+                "searchbar_filters": searchbar_filters,
+                "searchbar_inputs": searchbar_inputs,
+                "sortby": sortby,
+                "groupby": groupby,
+                "filterby": filterby,
+                "search_in": search_in,
+                "search": search,
+            }
+        )
+
+        return values
+
+    @http.route(["/my/company_management"], type="http", auth="user", website=True)
+    def my_company_management_home(self, **kwargs):
+        values = self._prepare_portal_layout_values()
+        companies_management = []
+        user_partner = request.env.user.partner_id
+        companies = request.env["res.partner"].sudo().search(
+            [("promoter_id", "=", user_partner.id)]
+        )
+        # Calcolo delle commissioni per ciascuna azienda
+        for company in companies:
+            total_commission = 0.0
+            # Ricerca dei corsi erogati all'azienda
+            trainings = request.env["gima.training"].search(
+                [("partner_id", "in", company.child_ids.ids)]
+            )
+            # Calcolo della commissione per ogni corso
+            for training in trainings:
+                total_commission += training.product_price * (user_partner.commission_percentage / 100.0)
+
+            # Aggiunta delle informazioni all'oggetto di gestione
+            companies_management.append({
+                'id': company.id,
+                'name': company.name,
+                'total_commission': total_commission
+            })
+
+        values['companies'] = companies_management
+        return request.render("gima_partner.portal_my_management_home", values)
+
+    @http.route(
+        ["/my/company_management/<int:company_id>"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def my_training(self, **kwargs):
+        values = self._prepare_company_employees_training_portal_rendering_values(**kwargs)
+        return request.render("gima_partner.portal_promoter_my_company", values)

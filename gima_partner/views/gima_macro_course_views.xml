@@ -1,0 +1,35 @@
+<odoo>
+
+    <record id="view_macro_course_form" model="ir.ui.view">
+        <field name="name">macro.course.tree</field>
+        <field name="model">gima.macro.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_macro_course_tree" model="ir.ui.view">
+        <field name="name">macro.course.form</field>
+        <field name="model">gima.macro.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_macro_course" model="ir.actions.act_window">
+        <field name="name">Macro Courses</field>
+        <field name="res_model">gima.macro.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="gima_macro_course_menu_config"
+              name="View All Macro Courses"
+              parent="gima_partner.gima_courses_menu_config"
+              action="action_view_macro_course"
+              sequence="1"/>
+
+</odoo>

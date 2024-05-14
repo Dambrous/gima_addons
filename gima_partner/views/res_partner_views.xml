@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="res_partner_" model="ir.ui.view">
+    <record id="res_partner" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='sales_purchases']" position="after">
                 <page string="Training">
-                    <group string="Training">
-                        <field name="gima_training_ids"/>
+                    <group string="Company Training">
                     </group>
+                    <field name="gima_training_ids">
+                        <tree>
+                            <field name="partner_id"/>
+                            <field name="course_id"/>
+                            <field name="type_course_id"/>
+                        </tree>
+                    </field>
+                    <span invisible="is_company != True">
+                        <group string="Employee Training">
+                        </group>
+                        <button name="action_view_employees_training" icon="oi-arrow-right"
+                                type="object" string="View Employees Training" class="btn-link" nolabel="1"/>
+                    </span>
                 </page>
                 <page string="Certifications">
                     <group>
@@ -25,7 +37,7 @@
                     <span invisible="is_company != True">
                         <group string="Employee Certifications">
                         </group>
-                        <button name="action_view_certifications" icon="oi-arrow-right"
+                        <button name="action_view_employee_certifications" icon="oi-arrow-right"
                                 type="object" string="View Certifications" class="btn-link" nolabel="1"/>
                     </span>
                     <span invisible="is_company == True">
@@ -34,6 +46,15 @@
                         <field name="gima_certifications_ids"/>
                     </span>
                 </page>
+                <page string="Promoter" invisible="is_company == True">
+                    <group string="Promoter">
+                        <field name="is_promoter"/>
+                        <field name="commission_percentage" invisible="is_promoter == False"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//group[1]/group[1]" position="inside">
+                <field name="promoter_id" domain="[('is_promoter', '=', True)]" invisible="is_company != True"/>
             </xpath>
         </field>
     </record>

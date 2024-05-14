@@ -1,6 +1,36 @@
 <odoo>
 
+    <record id="view_course_form" model="ir.ui.view">
+        <field name="name">course.form</field>
+        <field name="model">gima.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="course_type_id"/>
+                        <field name="product_id"/>
+                        <field name="product_price"/>
+                        <field name="duration"/>
+                        <field name="type_duration"/>
+                        <field name="course_icon"/>
+                        <field name="course_location"/>
+                        <field name="hours_online_without_teacher" invisible="course_location != 'mixed'"/>
+                        <field name="hours_with_teacher" invisible="course_location != 'mixed'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="action_view_courses" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">gima.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_view_courses_available" model="ir.actions.act_window">
         <field name="name">Courses</field>
         <field name="res_model">gima.course</field>
         <field name="view_mode">tree,form</field>
@@ -9,8 +39,12 @@
     <menuitem id="gima_courses_menu_config"
               name="Gima Courses"
               parent="contacts.menu_contacts"
-              action="action_view_courses"
               sequence="4"/>
 
+    <menuitem id="gima_all_courses_available_menu_config"
+              name="View Course Available"
+              parent="gima_partner.gima_courses_menu_config"
+              action="action_view_courses_available"
+              sequence="2"/>
 
 </odoo>

@@ -2,3 +2,4 @@
 "access_gima_certifications","gima.certifications","model_gima_certifications",,1,1,1,1
 "access_gima_training","gima.training","model_gima_training",,1,1,1,1
 "access_gima_course","gima.course","model_gima_course",,1,1,1,1
+"access_gima_macro_course","gima.macro.course","model_gima_macro_course",,1,1,1,1

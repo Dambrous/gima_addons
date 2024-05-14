@@ -1,31 +1,52 @@
 <odoo>
-    <!-- <record id="view_training_tree_custom" model="ir.ui.view">
+    <record id="view_employee_training_tree_custom" model="ir.ui.view">
         <field name="name">training.tree</field>
         <field name="model">gima.training</field>
         <field name="arch" type="xml">
-            <tree string="Training">
+            <tree string="Training" multi_edit="1">
                 <field name="partner_id"/>
-                <field name="type"/>
-                <field name="date_of_issue"/>
+                <field name="promoter_id"/>
+                <field name="type_course_id"/>
+                <field name="course_id"/>
+                <field name="product_price"/>
+                <field name="start_date"/>
                 <field name="expiration_date"/>
+                <field name="location"/>
+                <field name="duration"/>
+                <field name="type_duration" optional="hide"/>
                 <field name="state" widget="badge" decoration-success="state == 'valid'"
                        decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'"
                 />
+                <field name="certificate_course_attachment_ids" widget="many2many_binary"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_training_tree" model="ir.ui.view">
-        <field name="name">training.tree</field>
+    <record id="view_employee_training_form" model="ir.ui.view">
+        <field name="name">training.form</field>
         <field name="model">gima.training</field>
         <field name="arch" type="xml">
-            <tree string="training">
-                <field name="partner_id"/>
-                <field name="type"/>
-                <field name="date_of_issue"/>
-                <field name="expiration_date"/>
-                <field name="state"/>
-            </tree>
+            <form string="Training Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="promoter_id"/>
+                    </group>
+                    <group>
+                        <field name="course_id"/>
+                        <field name="type_course_id"/>
+                        <field name="product_price"/>
+                        <field name="start_date"/>
+                        <field name="expiration_date"/>
+                        <field name="location"/>
+                        <field name="duration"/>
+                        <field name="type_duration"/>
+                        <field name="certificate_course_attachment_ids" widget="many2many_binary"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 
@@ -34,17 +55,19 @@
         <field name="model">gima.training</field>
         <field name="arch" type="xml">
             <search string="Training Search">
-                <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter string="Group by  Course" name="group_by_course_id" domain="[]" context="{'group_by': 'course_id'}"/>
+                </group>
             </search>
         </field>
-    </record> -->
+    </record>
 
     <record id="action_view_training" model="ir.actions.act_window">
         <field name="name">Training</field>
         <field name="res_model">gima.training</field>
         <field name="view_mode">tree,form</field>
-        <!-- <field name="search_view_id" ref="view_training_search"/>
-        <field name="context">{'search_default_group_by_type': True}</field> -->
+        <field name="search_view_id" ref="view_training_search"/>
+        <field name="context">{'search_default_group_by_course_id': 1}</field>
     </record>
 
     <menuitem id="gima_training_menu_config"
@@ -68,7 +91,7 @@
         </t>
     </template>
 
-    <template id="portal_my_training" name="My Courses">
+    <template id="portal_my_training">
         <t t-call="gima_partner.portal_layout_courses">
             <div class="row g-2">
                 <!-- Prima riga con due colonne -->
@@ -147,7 +170,7 @@
         </t>
     </template>
 
-    <template id="portal_my_courses" name="My Courses">
+    <template id="portal_my_courses" name="Training Company">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 

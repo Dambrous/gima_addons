@@ -69,7 +69,11 @@
         <field name="model">gima.certifications</field>
         <field name="arch" type="xml">
             <search string="Certifications Search">
-                <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                    <filter string="Group by Partner" name="group_by_partner" domain="[]"
+                            context="{'group_by': 'partner_id'}"/>
+                </group>
             </search>
         </field>
     </record>
@@ -79,7 +83,7 @@
         <field name="res_model">gima.certifications</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_certifications_search"/>
-        <field name="context">{'search_default_group_by_type': True}</field>
+        <field name="context">{'search_default_group_by_type': 1, 'search_default_group_by_partner_id': 1}</field>
     </record>
 
     <menuitem id="gima_certifications_menu_config"

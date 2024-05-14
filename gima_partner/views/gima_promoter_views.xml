@@ -1,0 +1,148 @@
+<odoo>
+
+    <template id="portal_layout_my_companies">
+        <t t-call="portal.frontend_layout">
+            <t t-set="is_portal" t-value="True"/>
+
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container pt-3">
+                    <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
+                        <h3 class="my-3">Promoter Portal: My Companies</h3>
+                    </div>
+                    <t t-out="0"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_management_home" name="Promoter Portal">
+        <t t-call="gima_partner.portal_layout_my_companies">
+            <t t-foreach="companies" t-as="company">
+                <div class="row g-2">
+                    <div class="col-md-8">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/companies_icon.svg'"/>
+                                <t t-set="title" t-value="company['name']"/>
+                                <t t-set="text">Click here to monitor the training employee courses</t>>
+                                <t t-set="url" t-value="'/my/company_management/%d' % company['id']"/>
+                                <t t-set="config_card" t-value="True"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/commission_icon.svg'"/>
+                                <t t-set="title">Total Company Commissions</t>>
+                                <t t-set="text" t-value="'€ %f' % company['total_commission']"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_promoter_my_company" name="Employees Formation">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Courses</t>
+            </t>
+            <t t-call="gima_partner.portal_training_employee_list"/>
+        </t>
+    </template>
+
+    <template id="portal_training_employee_list">
+        <h4>Promoter: <t t-esc="user_id.name"/></h4>
+        <table class="table table-sm">
+            <thead class="bg-100" style="border: 2px solid #2f2f6d;">
+                <tr class="active">
+                    <th class="text-center">Partner</th>
+                    <th class="text-left">Macro Group Course</th>
+                    <th class="text-left">Course</th>
+                    <th class="text-center">Data of issue</th>
+                    <th class="text-center">Expiration date</th>
+                    <th class="text-center">State</th>
+                    <th class="text-center">Download Certificate</th>
+                    <th/>
+                </tr>
+            </thead>
+
+            <t t-foreach="grouped_training" t-as="course">
+                <tbody>
+                    <tr t-if="groupby in ('partner_id', 'course_id')">
+                        <th class="text-start" colspan="12"
+                            style="background-color: #F3F2F2; color: #2f2f6d; font-weight: bold !important;'">
+                            <t t-if="groupby == 'partner_id'">
+                                <img src="/gima_partner/static/src/img/group_by_employee.svg"
+                                     style="height: 40px; margin-left: 5px;"/>
+                            </t>
+                            <t t-if="groupby == 'course_id'">
+                                <img src="/gima_partner/static/src/img/group_by_course.svg"
+                                     style="height: 40px; margin-left: 5px;"/>
+                            </t>
+                            <em class="font-weight-normal" t-out="course['group_by']"/>
+                        </th>
+                    </tr>
+                    <t t-foreach="course['trainings']" t-as="training">
+                        <tr t-attf-style="#{(training.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (training.state == 'expired') and 'background-color: #8B0000; color: white; font-weight: bold !important;' or ''}">
+                             <td class="text-center">
+                                <span t-field="training.sudo().partner_id.name"/>
+                            </td>
+                            <td class="text-left">
+                                <t t-out="training.type_course_id.name"/>
+                            </td>
+                            <td class="text-left">
+                                <t t-out="training.course_id.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="training.start_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="training.expiration_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-if="training.state == 'valid'" class="badge rounded-pill text-bg-success">
+                                    Valid
+                                </span>
+                                <span t-if="training.state == 'expiring'"
+                                      class="badge rounded-pill text-bg-warning">
+                                    Expiring
+                                </span>
+                                <span t-if="training.state == 'expired'" class="badge rounded-pill text-bg-danger">
+                                    Expired
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <t t-if="training.certificate_course_attachment_ids">
+                                    <a t-attf-href="/download/certificate/{{ training.id }}">
+                                        <i class="fa fa-download" aria-hidden="true"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    No certificates found
+                                </t>
+                            </td>
+
+                            <td>
+                                <t t-if="training.state == 'expiring'">
+                                    <i role="alert" class="fa fa-exclamation-triangle text-warning mx-2"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+                <t t-foreach="range(2)" t-as="row">
+                    <tr>
+                        <t t-foreach="range(5)" t-as="cell">
+                            <td/>
+                        </t>
+                    </tr>
+                </t>
+            </t>
+        </table>
+    </template>
+</odoo>

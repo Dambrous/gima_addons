@@ -8,6 +8,9 @@ class ResPartner(models.Model):
     gima_certifications_ids = fields.One2many("gima.certifications", "partner_id")
     is_certified_fgas = fields.Boolean(string="Certified FGAS")
     is_certified_iso_9001 = fields.Boolean(string="Certified ISO 9001")
+    is_promoter = fields.Boolean(string="Financial Promoter")
+    promoter_id = fields.Many2one('res.partner')
+    commission_percentage = fields.Float(string="Commission Percentage")
 
     @api.onchange('gima_certifications_ids')
     def _onchange_certification(self):
@@ -29,7 +32,7 @@ class ResPartner(models.Model):
         else:
             self.is_certified_iso_9001 = False
 
-    def action_view_certifications(self):
+    def action_view_employee_certifications(self):
         certifications = self.env["gima.certifications"].search(
             [("partner_id", "in", self.child_ids.ids)]
         )
@@ -40,4 +43,17 @@ class ResPartner(models.Model):
             "view_id": self.env.ref("gima_partner.view_certifications_tree_custom").id,
             "view_mode": "tree",
             "domain": [("id", "in", certifications.ids)],
+        }
+
+    def action_view_employees_training(self):
+        trainings = self.env["gima.training"].search(
+            [("partner_id", "in", self.child_ids.ids)]
+        )
+        return {
+            "name": "Employees Trainings",
+            "res_model": "gima.training",
+            "type": "ir.actions.act_window",
+            "view_id": self.env.ref("gima_partner.view_employee_training_tree_custom").id,
+            "view_mode": "tree",
+            "domain": [("id", "in", trainings.ids)],
         }

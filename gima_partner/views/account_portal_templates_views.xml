@@ -15,7 +15,7 @@
             <attribute name="groups">base.group_user</attribute>
         </xpath>
         <xpath expr="//div[@id='portal_common_category']" position="before">
-            <t t-if="user_id.is_certified_fgas or user_id.is_certified_iso_9001">
+            <t t-if="user_id.is_company">
                 <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
                     <t t-call="portal.portal_docs_entry" t-if="False"/>
                     <t t-call="portal.portal_docs_entry">
@@ -26,15 +26,28 @@
                     </t>
                 </div>
             </t>
-            <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
-                <t t-call="portal.portal_docs_entry" t-if="False"/>
-                <t t-call="portal.portal_docs_entry">
-                    <t t-set="icon" t-value="'/gima_partner/static/src/img/training_icon.svg'"/>
-                    <t t-set="title">Employee Training</t>
-                    <t t-set="url" t-value="'/my/company_training'"/>
-                    <t t-set="config_card" t-value="True"/>
-                </t>
-            </div>
+            <t t-if="user_id.is_company">
+                <div class="o_portal_category row g-2 mt-3" id="portal_certifications">
+                    <t t-call="portal.portal_docs_entry" t-if="False"/>
+                    <t t-call="portal.portal_docs_entry">
+                        <t t-set="icon" t-value="'/gima_partner/static/src/img/training_icon.svg'"/>
+                        <t t-set="title">Employee Training</t>
+                        <t t-set="url" t-value="'/my/company_training'"/>
+                        <t t-set="config_card" t-value="True"/>
+                    </t>
+                </div>
+            </t>
+            <t t-if="user_id.is_promoter">
+                <div class="o_portal_category row g-2 mt-3">
+                    <t t-call="portal.portal_docs_entry" t-if="False"/>
+                    <t t-call="portal.portal_docs_entry">
+                        <t t-set="icon" t-value="'/gima_partner/static/src/img/companies_icon.svg'"/>
+                        <t t-set="title">Company Management</t>
+                        <t t-set="url" t-value="'/my/company_management'"/>
+                        <t t-set="config_card" t-value="True"/>
+                    </t>
+                </div>
+            </t>
         </xpath>
     </template>
     <template id="portal_docs_entry" inherit_id="portal.portal_docs_entry"
