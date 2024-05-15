@@ -38,13 +38,17 @@
 
     <menuitem id="gima_courses_menu_config"
               name="Gima Courses"
-              parent="contacts.menu_contacts"
-              sequence="4"/>
+              parent="contacts.menu_contacts"/>
 
     <menuitem id="gima_all_courses_available_menu_config"
               name="View Course Available"
               parent="gima_partner.gima_courses_menu_config"
-              action="action_view_courses_available"
-              sequence="2"/>
+              action="action_view_courses_available"/>
+
+    <menuitem id="gima_macro_course_menu_config"
+              name="View All Macro Courses"
+              parent="gima_partner.gima_courses_menu_config"
+              action="action_view_macro_course"
+              sequence="1"/>
 
 </odoo>

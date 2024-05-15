@@ -26,10 +26,4 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="gima_macro_course_menu_config"
-              name="View All Macro Courses"
-              parent="gima_partner.gima_courses_menu_config"
-              action="action_view_macro_course"
-              sequence="1"/>
-
 </odoo>
