@@ -78,7 +78,7 @@
         </field>
     </record>
 
-    <record id="action_view_certifications" model="ir.actions.act_window">
+    <record id="action_view_all_certifications" model="ir.actions.act_window">
         <field name="name">Certifications</field>
         <field name="res_model">gima.certifications</field>
         <field name="view_mode">tree,form</field>
@@ -89,7 +89,7 @@
     <menuitem id="gima_certifications_menu_config"
               name="Gima Certifications"
               parent="contacts.menu_contacts"
-              action="action_view_certifications"
+              action="action_view_all_certifications"
               sequence="4"/>
 
     <template id="portal_layout_certifications" name="Portal Layout">
