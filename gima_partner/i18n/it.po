@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 23:27+0000\n"
-"PO-Revision-Date: 2024-05-14 23:27+0000\n"
+"POT-Creation-Date: 2024-05-20 22:24+0000\n"
+"PO-Revision-Date: 2024-05-20 22:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgid "Certification Number"
 msgstr "Numero di certificazione"
 
 #. module: gima_partner
-#: model:ir.actions.act_window,name:gima_partner.action_view_certifications
+#: model:ir.actions.act_window,name:gima_partner.action_view_all_certifications
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_form
@@ -605,6 +605,11 @@ msgstr "Rimani aggiornato sullo sviluppo professionale attraverso corsi ECM"
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
 msgid "There are currently no certifications for your company."
 msgstr "Attualmente non ci sono certificazioni per la tua azienda."
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
+msgid "There are currently no courses and certification for this company."
+msgstr "Non ci sono corsi o certificazioni da mostrare."
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_management_home
