@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Entrivis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-weight: 400;
+        line-height: 1.1;
+        color: #6C74E5;
+    }
+    ul {
+        color: #6C74E5;
+    }
+
+
+</style>
+
+<body>
+<!--Entrivis Header-->
+<section>
+    <div class="container">
+        <div class="row justify-content-md-between justify-content-center border-bottom align-items-center py-2 mx-0">
+            <div class="d-flex flex-wrap justify-content-md-between py-2 col-md-2">
+                <div class="text-center">
+                    <a href="https://apps.odoo.com/apps/modules/browse?search=entrivis" target="_blank"
+                       class="btn mb-2 mb-lg-0" style="background-color: #6C74E5; color:#fff;"><i
+                            class="fa fa-globe"></i> <span class="d-none d-sm-inline">Entrivis Apps</span></a>
+                </div>
+            </div>
+            <div class="text-center mb-3 mb-lg-0 ml-md-5 col">
+                <a class="btn p-2" href="https://www.entrivistech.com">
+                    <img src="Entrivis_logo.svg" alt="entrivis-logo" style="height:50px">
+                </a>
+            </div>
+            <div class="mt-md-0 mt-4 mb-3 mb-lg-0 col-md-3 text-end mr-0">
+                    <span class="btn btn-sm mb-2 mb-lg-0"
+                          style="background-color: #6C74E5; color:#fff;"><i
+                            class="fa fa-check"></i> Enterprise</span>
+                <span class="btn btn-sm mb-2 mb-lg-0"
+                      style="background-color: #6C74E5; color:#fff;"><i
+                        class="fa fa-check"></i> Community</span>
+                <span class="btn btn-sm mb-2 mb-lg-0"
+                      style="background-color: #6C74E5; color:#fff;"><i
+                        class="fa fa-check"></i> Odoo.sh</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Header Ends-->
+<section class="oe_container">
+    <div class="row pb64 pt32 align-items-center">
+        <div class="col-12 col-md-7 col-lg-6">
+            <h2 style="color:#3C4858;font-size: 40px;">
+                <span style="color:#6C74E5">Portal Quick Menu Access</span>
+            </h2>
+            <p style="color:#8492A6" class="lead mb-4">
+                By default odoo display documents on only website's home page.
+                This module allows to display document menu list on all website pages.
+            </p>
+        </div>
+    </div>
+    <div class="row pb64 mt0">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Install the module from the apps menu.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="install_portal_quick_menu_access.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0">
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="entrivis_portal_config_settings.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Go to general settings and enable document
+                        menu access in portal section.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0 ">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Go to My Account menu. Open any record from
+                        Document list.</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="entrivis_portal_documents_list.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0 ">
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="entrivis_portal_slider_button_on_list.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Click on slider button to open document
+                        list.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0 ">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Documents menu can be seen in right side of
+                        the page.</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="Entrivis_open_side_portal_document.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0">
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="Entrivis_open_sales_order.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <ul>
+                <li><p style="color:#8492A6;font-size:20px" class="mb-4">Open any record from document's record
+                    list.</p></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row pb64 mt0 ">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Document menu can be also opened from the
+                        record's slider button.</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="Entrivis_open_specific_sales_order.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+    </div>
+    <div class="row pb64 mt0 ">
+        <div class="col-12 col-md-8 col-lg-8">
+            <div>
+                <img src="Entrivis_open_side_portal_doc_from_order.png" class="img-fluid"
+                     style="border:1px solid rgba(143, 155, 174, 0.31); border-radius:.625rem;">
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div>
+                <ul>
+                    <li><p style="color:#8492A6;font-size:20px" class="mb-4">Documents menu can be seen in right side of
+                        the page.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <a href="https://www.entrivistech.com/odoo-erp-services" style="text-decoration:none" target="_blanck">
+        <div class="container">
+            <h1 class="text-center font-weight-bold display-4" style="color:#6C74E5;">
+                Our Services
+            </h1>
+            <hr class="w-50 mx-auto" style="border-style:solid;border-top-width:2px;border-color:#6C74E5;"/>
+        </div>
+    </a>
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-consulting-services" style="text-decoration:none"
+                   target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/odoo-consulting.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                            Odoo Consulting
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Leverage the Ultimate Potential</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                We commit to delivering functional and technical consulting with exact rules and
+                                regulations to implement and execute ODOO in your business.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-development-company" style="text-decoration:none"
+                   target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/odoo-coding.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                            Odoo Development
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6> Dedicated ODOO Experts</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                Based on our comprehensive research, we custom-develop ODOO with a focus on present
+                                needs but consider your future.
+                                <br/>
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-migration-service" style="text-decoration:none"
+                   target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="  https://www.entrivistech.com/entrivis_website/static/src/img/migration.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                            Odoo Migration
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6> Switch To The Newer Version Hassle-free</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                With an impeccable and accurate ODOO migration service, we promise outstanding accuracy
+                                of features and data.
+                                <br/>
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-erp-support" style="text-decoration:none" target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/support.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                            Odoo Support
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Your Satisfaction Is Our Result</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                Reach out anytime to our expert consultants &amp; developers -trained to resolve any
+                                functional &amp; technical problems.
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-erp-implementation" style="text-decoration:none"
+                   target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="  https://www.entrivistech.com/entrivis_website/static/src/img/implementation.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                            Odoo Implementation
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Make What Suits You The Best </h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                We provide a customizable solution to meet all your operational needs, helping you in
+                                continuous business growth.
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-integration" style="text-decoration:none" target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/usp-icon3.png"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                             Odoo Integration
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Get The Best Of Both Worlds </h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                Our qualified technical experts assure successful ODOO integration with the other
+                                systems.
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-training" style="text-decoration:none" target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/odoo-education.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                              Odoo Training
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Learn from Scratch</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                Learn from experts on how to implement and manage an ODOO successfully. Get Trained with
+                                the latest versions.
+                                <br/>
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-system-audit" style="text-decoration:none" target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/odoo-audit.svg"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                              System Audit
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>In-depth Sanity Check</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                LOur qualified team analyzes your ODOO customizations or setup and will determine
+                                performance efficiency and identify code bloat or security risks/bugs.
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 s_col_no_bgcolor pb16 pt16">
+                <a href="https://www.entrivistech.com/odoo-business-study" style="text-decoration:none"
+                   target="_blanck">
+                    <div style="border:1px solid #EFECEC; border-radius:8px">
+                        <div class="d-flex align-items-center h-100 bg-white px-3 py-3">
+                            <div style="width:100px">
+                                <img class="card-img-top mx-auto d-block"
+                                     src="https://www.entrivistech.com/entrivis_website/static/src/img/usp-icon3.png"
+                                     height="70px" , width="70px">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <span style="font-weight: bolder;font-size:22px;font: black;">
+                                        <font class="text-o-color-1">
+                                              Business Study
+                                        </font>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <span class="sub-title d-block" style="padding-left:5px"> 
+                                <h6>Business Analysis Done Right</h6>
+                        </span>
+                        <div class="desc" style="padding-left:5px">
+                            <p>
+                                Esteemed business study service involving significant stakeholders to get exquisite
+                                productivity.
+                                <br/>
+                                <br/>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="py-3 px-4 d-flex justify-content-center align-items-center">
+            <a class="btn mb-2 mb-lg-0 px-5 mx-3 btn-lg"
+               href="https://apps.odoo.com/apps/modules/browse?search=Entrivis"
+               style="background-color: #6C74E5; color:#ffffff;"
+               target="_blanck">
+                <i class="fa fa-globe"></i>Explore Our Apps
+            </a>
+            <a class="btn mb-2 mb-lg-0 px-5 mx-3 btn-lg" href="skype:esohil4u"
+               style="background-color: #6C74E5; color:#fff;">
+                <i class="fa fa-skype"></i> Skype</a>
+            <a class="btn mb-2 mb-lg-0 px-5 mx-3 btn-lg" href="mailto: hello@entrivistech.com"
+               style="background-color: #6C74E5; color:#fff;">
+                <i class="fa fa-envelope"></i> Email</a>
+            <a class="btn mb-2 mb-lg-0 px-5 mx-3 btn-lg"
+               href="https://www.entrivistech.com/"
+               style="background-color: #6C74E5; color:#fff;"><i class="fa fa-globe"></i> Website</a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

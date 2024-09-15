@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal.portal_my_home" name="My Portal">
+        <div class="o_portal_my_home">
+            <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+            <div class="o_portal_docs row g-2" t-att-style="'width:355px;' if show_line_wise_documents else ''">
+                <div class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"/>
+                <p class="o_portal_no_doc_message d-none">No Documents to display</p>
+                <div t-if="portal_alert_category_enable" class="o_portal_category row g-2 mt-3"
+                     id="portal_alert_category"/>
+                <div t-if="portal_client_category_enable" class="o_portal_category row g-2 mt-3"
+                     id="portal_client_category"/>
+                <div t-if="portal_service_category_enable" class="o_portal_category row g-2 mt-3"
+                     id="portal_service_category"/>
+                <div t-if="portal_vendor_category_enable" class="o_portal_category row g-2 mt-3"
+                     id="portal_vendor_category"/>
+                <div class="o_portal_category row g-2 mt-3" id="portal_common_category">
+                    <t t-call="portal.portal_docs_entry">
+                        <t t-set="icon" t-value="'/portal/static/src/img/portal-addresses.svg'"/>
+                        <t t-set="title">Addresses</t>
+                        <t t-set="text">Add, remove or modify your addresses</t>
+                        <t t-set="url" t-value="'/my/account'"/>
+                        <t t-set="config_card" t-value="True"/>
+                    </t>
+                    <t t-call="portal.portal_docs_entry">
+                        <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>
+                        <t t-set="title">Connection &amp; Security</t>
+                        <t t-set="text">Configure your connection parameters</t>
+                        <t t-set="url" t-value="'/my/security'"/>
+                        <t t-set="config_card" t-value="True"/>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Inherited portal_docs_entry template-->
+    <template id="portal_docs_entry_inherited" inherit_id="portal.portal_docs_entry">
+        <xpath expr="//div" position="attributes">
+            <attribute name="t-att-class">'o_portal_index_card ' + ('' if config_card else 'd-none ') + ('col-12' if
+                show_line_wise_documents else ('col-md-12 order-0' if show_count else 'col-md-6 order-2'))
+            </attribute>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_inherit">
+        <t t-call="portal.portal_layout">
+            <t t-set="my_details" t-value="True"/>
+            <t t-call="portal.portal_my_home"/>
+            <div class="oe_structure" id="oe_structure_portal_my_home_2"/>
+        </t>
+    </template>
+
+    <!-- Inherited portal_searchbar_custom template-->
+    <template id="portal_searchbar_custom" inherit_id="portal.portal_searchbar">
+        <xpath expr="//div[@id='o_portal_navbar_content']/div" position="after">
+            <button t-if="res_company.menu_access" data-bs-target="#myOffcanvas" data-bs-toggle="offcanvas"
+                    t-attf-class="btn btn-secondary position-relative ms-1 float-end d-none d-lg-block d-xl-block">
+                <i class="fa fa-sliders my-0 m-2"/>
+            </button>
+        </xpath>
+        <xpath expr="//nav/button" position="after">
+            <button t-if="res_company.menu_access" data-bs-target="#myOffcanvas" data-bs-toggle="offcanvas"
+                    t-attf-class="btn btn-secondary position-relative ms-1 float-end d-lg-none">
+                <i class="fa fa-sliders my-0 m-2"/>
+            </button>
+        </xpath>
+        <xpath expr="//nav" position="after">
+            <t t-call="entrivis_odoo_portal_quick_access.offcanvas_content_template"/>
+        </xpath>
+    </template>
+
+    <!--     Inherited portal_layout template-->
+    <template id="portal_layout_custom" inherit_id="portal.portal_layout">
+        <xpath expr="//t[@t-if='prev_record or next_record']" position="attributes">
+            <attribute name="class">col-1 flex-grow-0 text-end</attribute>
+        </xpath>
+        <xpath expr="//t[@t-if='prev_record or next_record']" position="after">
+            <div t-attf-class="#{'col-1' if prev_record or next_record else 'col-2'}">
+                <button t-if="res_company.menu_access" data-bs-target="#myOffcanvas" data-bs-toggle="offcanvas"
+                        t-attf-class="btn btn-secondary position-relative ms-1 mx-3 float-end">
+                    <i class="fa fa-sliders my-0 m-2"/>
+                </button>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='not no_breadcrumbs and not my_details and not breadcrumbs_searchbar']"
+               position="after">
+            <t t-call="entrivis_odoo_portal_quick_access.offcanvas_content_template"/>
+        </xpath>
+    </template>
+
+    <!--Custom offcanvas_content_template for open sidebar portal menu-->
+    <template id="offcanvas_content_template">
+        <div class="offcanvas offcanvas-end p-3" id="myOffcanvas" style="width: 80%; max-width: 400px;" tabindex="-1">
+            <div class="accordion accordion-flush flex-grow-1 overflow-auto">
+                <t t-call="portal.portal_my_home">
+                    <t t-set="show_line_wise_documents" t-value="True"/>
+                </t>
+            </div>
+            <div class="offcanvas-body d-flex justify-content-between flex-grow-0 border-top overflow-hidden">
+                <button t-attf-class="btn btn-secondary d-flex py-1 mb-2" style="height:33px;"
+                        data-bs-dismiss="offcanvas"
+                        title="Close Menu">
+                    Close
+                </button>
+            </div>
+        </div>
+    </template>
+</odoo>
