@@ -4,7 +4,7 @@
     "website": "http://www.lucadambrosio.cloud",
     "license": "LGPL-3",
     "category": "Contacts",
-    "version": "17.0.1.0.0",
+    "version": "17.0.2.0.0",
     "depends": ["base", "contacts"],
     "data": [
         "security/ir.model.access.csv",

@@ -153,7 +153,7 @@
                     <div class="col-12">
                         <div class="o_portal_category row g-2 mt-3">
                             <t t-call="portal.portal_docs_entry">
-                                <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/haccp_icon.svg'"/>
                                 <t t-set="title">HACCP Courses</t>
                                 <t t-set="text">Understand the key principles of food safety with HACCP training</t>
                                 <t t-set="url" t-value="'/my/company_training/haccp'"/>
