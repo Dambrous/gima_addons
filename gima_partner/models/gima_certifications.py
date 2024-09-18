@@ -15,7 +15,7 @@ class GimaCertifications(models.Model):
     certificate_number = fields.Char(string="Certificate Number")
     attachment_ids = fields.Many2many("ir.attachment", string="Attachments")
     state = fields.Selection(
-        [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired")]
+        [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired"), ("waiting", "Waiting")]
     )
     date_of_issue = fields.Date(string="Date of issue")
     maintenance_date = fields.Date(string="Date maintenance")

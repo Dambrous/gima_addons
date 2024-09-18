@@ -156,12 +156,12 @@ msgstr "Certificazioni aziendali"
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
 msgid "Company Management"
-msgstr ""
+msgstr "Gestione Azienda"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout
 msgid "Company Management |"
-msgstr ""
+msgstr "Gestione Azienda |"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
@@ -659,7 +659,7 @@ msgstr "Cerca il numero dell'attestato"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Search in Courses"
-msgstr ""
+msgstr "Cerca tra i corsi"
 
 #. module: gima_partner
 #. odoo-python
@@ -780,7 +780,7 @@ msgstr "Visualizza tutti i macro gruppi di corsi"
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "View Certifications"
-msgstr "Visualizza Certificazioni"
+msgstr "Visualizza Certificazioni Dipendenti"
 
 #. module: gima_partner
 #: model:ir.ui.menu,name:gima_partner.gima_all_courses_available_menu_config
@@ -794,8 +794,8 @@ msgstr "Visualizza Formazione Dipendenti"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
-msgid "View Employees Training |"
-msgstr "Visualizza Formazione Dipendenti |"
+msgid "View Employees Training"
+msgstr "Visualizza Formazione Dipendenti"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications

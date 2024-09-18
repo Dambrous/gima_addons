@@ -69,7 +69,7 @@
     <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs" priority="20">
         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
             <li id="portal_breadcrumbs_courses" t-if="type == 'training'" class="breadcrumb-item active">
-                <a t-attf-href="/my/company_training?{{ keep_query() }}">View Employees Training | <t t-esc="partner_id.name"/></a>
+                <a t-attf-href="/my/company_training?{{ keep_query() }}">View Employees Training</a>
             </li>
         </xpath>
     </template>

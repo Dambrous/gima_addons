@@ -19,7 +19,7 @@ class GimaTraining(models.Model):
     )
     certificate_course_attachment_ids = fields.Many2many("ir.attachment", string="Attachments")
     state = fields.Selection(
-        [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired")]
+        [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired"), ("waiting", "Waiting")]
     )
     product_price = fields.Float(string="Product Price")
     promoter_id = fields.Many2one("res.partner", related="partner_id.parent_id.promoter_id", string="Promoter")

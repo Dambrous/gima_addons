@@ -780,7 +780,7 @@ msgstr ""
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
-msgid "View Employees Training |"
+msgid "View Employees Training"
 msgstr ""
 
 #. module: gima_partner
