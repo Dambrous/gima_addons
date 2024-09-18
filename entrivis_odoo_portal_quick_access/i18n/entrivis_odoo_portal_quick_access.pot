@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* entrivis_odoo_portal_quick_access
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-18 20:05+0000\n"
+"PO-Revision-Date: 2024-09-18 20:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: entrivis_odoo_portal_quick_access
+#: model_terms:ir.ui.view,arch_db:entrivis_odoo_portal_quick_access.offcanvas_content_template
+msgid "Close"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model_terms:ir.ui.view,arch_db:entrivis_odoo_portal_quick_access.offcanvas_content_template
+msgid "Close Menu"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model:ir.model,name:entrivis_odoo_portal_quick_access.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model:ir.model,name:entrivis_odoo_portal_quick_access.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model_terms:ir.ui.view,arch_db:entrivis_odoo_portal_quick_access.res_config_settings_view_form_inherit
+msgid "Display slider button to enable access for document menu"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model:ir.model.fields,field_description:entrivis_odoo_portal_quick_access.field_res_company__menu_access
+#: model:ir.model.fields,field_description:entrivis_odoo_portal_quick_access.field_res_config_settings__menu_access
+msgid "Document Menu Access"
+msgstr ""
+
+#. module: entrivis_odoo_portal_quick_access
+#: model_terms:ir.ui.view,arch_db:entrivis_odoo_portal_quick_access.res_config_settings_view_form_inherit
+msgid "Portal"
+msgstr ""
