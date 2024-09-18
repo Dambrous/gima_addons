@@ -268,7 +268,7 @@ msgstr ""
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Data of issue"
-msgstr "Data di emissione"
+msgstr "Data emissione"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__expiration_date
@@ -287,7 +287,7 @@ msgstr "Data di manutenzione"
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__date_of_issue
 #, python-format
 msgid "Date of issue"
-msgstr "Data di emissione"
+msgstr "Data emissione"
 
 #. module: gima_partner
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__type_duration__days
@@ -420,7 +420,7 @@ msgstr "In Scadenza"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Expiring Date"
-msgstr "Data Scadenza"
+msgstr "Data scadenza"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
