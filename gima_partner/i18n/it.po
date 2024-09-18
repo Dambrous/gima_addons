@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 16:01+0000\n"
-"PO-Revision-Date: 2024-09-18 16:01+0000\n"
+"POT-Creation-Date: 2024-09-18 16:07+0000\n"
+"PO-Revision-Date: 2024-09-18 16:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -123,13 +123,13 @@ msgstr "Ricerca certificazioni"
 #: model:ir.model.fields,field_description:gima_partner.field_res_partner__is_certified_fgas
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__is_certified_fgas
 msgid "Certified FGAS"
-msgstr "Patentino F-GAS"
+msgstr "Cliente F-GAS"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_res_partner__is_certified_iso_9001
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__is_certified_iso_9001
 msgid "Certified ISO 9001"
-msgstr "Certificato ISO 9001"
+msgstr "Cliente ISO 9001"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_management_home
@@ -147,11 +147,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__commission_percentage
 msgid "Commission Percentage"
 msgstr "Percentuale provvigione"
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__9001_company_licence
-msgid "Company Certification 9001"
-msgstr "Certificazione aziendale 9001"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
@@ -398,16 +393,6 @@ msgstr "In Scadenza"
 #, python-format
 msgid "Expiring Date"
 msgstr "Data Scadenza"
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_company_licence
-msgid "F-GAS Company Licence"
-msgstr "Certificazione aziendale F-GAS"
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_individual_licence
-msgid "F-GAS Individual Licence"
-msgstr "Patentino dipendente F-GAS"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
@@ -750,9 +735,9 @@ msgid "Type"
 msgstr "Tipologia"
 
 #. module: gima_partner
-#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__type
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__type_certification_id
 msgid "Type Certification"
-msgstr "Tipologia certificazione"
+msgstr "Tipologia Certificazione"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__type_duration

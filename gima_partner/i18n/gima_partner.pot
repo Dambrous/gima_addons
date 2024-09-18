@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 16:01+0000\n"
-"PO-Revision-Date: 2024-09-18 16:01+0000\n"
+"POT-Creation-Date: 2024-09-18 16:07+0000\n"
+"PO-Revision-Date: 2024-09-18 16:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -134,11 +134,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:gima_partner.field_res_partner__commission_percentage
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__commission_percentage
 msgid "Commission Percentage"
-msgstr ""
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__9001_company_licence
-msgid "Company Certification 9001"
 msgstr ""
 
 #. module: gima_partner
@@ -385,16 +380,6 @@ msgstr ""
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Expiring Date"
-msgstr ""
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_company_licence
-msgid "F-GAS Company Licence"
-msgstr ""
-
-#. module: gima_partner
-#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_individual_licence
-msgid "F-GAS Individual Licence"
 msgstr ""
 
 #. module: gima_partner
@@ -736,7 +721,7 @@ msgid "Type"
 msgstr ""
 
 #. module: gima_partner
-#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__type
+#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__type_certification_id
 msgid "Type Certification"
 msgstr ""
 

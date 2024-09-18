@@ -13,26 +13,6 @@ class ResPartner(models.Model):
     commission_percentage = fields.Float(string="Commission Percentage")
     gima_macro_course_ids = fields.Many2many('gima.macro.course')
 
-    @api.onchange('gima_certifications_ids')
-    def _onchange_certification(self):
-        for certification in self.gima_certifications_ids:
-            if certification.type in ['fgas_individual_licence', 'fgas_company_licence'] and certification.state in (
-            'valid', 'expiring'):
-                self.is_certified_fgas = True
-                break
-        else:
-            self.is_certified_fgas = False
-
-    @api.onchange('gima_certifications_ids')
-    def _onchange_certification(self):
-        for certification in self.gima_certifications_ids:
-            if certification.type == '9001_company_licence' and certification.state in (
-                    'valid', 'expiring'):
-                self.is_certified_iso_9001 = True
-                break
-        else:
-            self.is_certified_iso_9001 = False
-
     def action_view_employee_certifications(self):
         certifications = self.env["gima.certifications"].search(
             [("partner_id", "in", self.child_ids.ids)]
