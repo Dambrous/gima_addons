@@ -8,18 +8,10 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='sales_purchases']" position="after">
                 <page string="Training" invisible="is_company == False">
-                    <group string="Company Training">
-                    </group>
-                    <field name="gima_training_ids">
-                        <tree>
-                            <field name="partner_id"/>
-                            <field name="course_id"/>
-                            <field name="type_course_id"/>
-                        </tree>
-                    </field>
+                    <group string="Company Training"/>
+                    <field name="gima_training_ids"/>
                     <span invisible="is_company != True">
-                        <group string="Employee Training">
-                        </group>
+                        <group string="Employee Training"/>
                         <button name="action_view_employees_training" icon="oi-arrow-right"
                                 type="object" string="View Employees Training" class="btn-link" nolabel="1"/>
                     </span>
@@ -30,13 +22,11 @@
                         <field name="is_certified_iso_9001"/>
                     </group>
                     <span invisible="is_company != True">
-                        <group string="Company Certifications">
-                        </group>
+                        <group string="Company Certifications"/>
                         <field name="gima_certifications_ids"/>
                     </span>
                     <span invisible="is_company != True">
-                        <group string="Employee Certifications">
-                        </group>
+                        <group string="Employee Certifications"/>
                         <button name="action_view_employee_certifications" icon="oi-arrow-right"
                                 type="object" string="View Certifications" class="btn-link" nolabel="1"/>
                     </span>

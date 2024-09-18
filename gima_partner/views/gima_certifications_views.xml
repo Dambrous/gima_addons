@@ -59,7 +59,7 @@
                 <t t-set="title">Certifications</t>
             </t>
             <div t-if="not grouped_certifications" class="alert alert-warning" role="alert">
-                There are currently no certifications for your company.
+                No results were found for your search.
             </div>
             <t t-if="grouped_certifications" t-call="gima_partner.portal_certification_list"/>
         </t>
@@ -184,15 +184,16 @@
                     <t t-set="first_row" t-value="True"/>
                     <t t-foreach="certifications['certifications']" t-as="certification">
                         <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'color: #8B0000; font-weight: bold !important;' or ''}">
-                            <t t-if="first_row">
-                                <td class="text-left">
-                                    <img src="/gima_partner/static/src/img/arrow_right_blue.svg"
-                                         style="height: 20px; margin-left: 5px;"/>
-                                </td>
-                            </t>
-                            <t t-else="">
-                                <td/>
-                            </t>
+<!--                            <t t-if="first_row">-->
+<!--                                <td class="text-left">-->
+<!--                                    <img src="/gima_partner/static/src/img/arrow_right_blue.svg"-->
+<!--                                         style="height: 20px; margin-left: 5px;"/>-->
+<!--                                </td>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <td/>-->
+<!--                            </t>-->
+                            <td/>
                             <t t-set="first_row" t-value="False"/>
                             <td class="text-left">
                                 <t t-out="certification.certificate_number"/>

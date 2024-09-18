@@ -58,7 +58,9 @@
 
     <template id="portal_training_employee_list">
         <t t-if="not grouped_training">
-            <p class="alert alert-warning">There are currently no courses and certification for this company.</p>
+            <p class="alert alert-warning">
+                No results were found for your search.
+            </p>
         </t>
         <t t-else="">
             <h4>Promoter:

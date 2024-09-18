@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 13:39+0000\n"
-"PO-Revision-Date: 2024-09-18 13:39+0000\n"
+"POT-Creation-Date: 2024-09-18 15:17+0000\n"
+"PO-Revision-Date: 2024-09-18 15:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "<span class=\"d-none d-md-inline\">N°</span>"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "All"
-msgstr "Tutte"
+msgstr "Niente"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__attachment_ids
@@ -106,7 +106,7 @@ msgstr "Gestione Certificazioni |"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Certification Number"
-msgstr "Numero di certificazione"
+msgstr ""
 
 #. module: gima_partner
 #: model:ir.actions.act_window,name:gima_partner.action_view_all_certifications
@@ -198,7 +198,6 @@ msgstr ""
 #: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__course_id
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #, python-format
@@ -294,7 +293,6 @@ msgstr "Attestato"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Download Certificate"
@@ -303,7 +301,6 @@ msgstr "Scarica attestato"
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__duration
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__duration
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 msgid "Duration"
 msgstr "Durata"
@@ -329,7 +326,7 @@ msgstr ""
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Employee"
-msgstr "Dipendenti"
+msgstr ""
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
@@ -348,7 +345,6 @@ msgid "Employee Training Management |"
 msgstr "Gestione Formazione Dipendenti |"
 
 #. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 msgid "End date"
 msgstr "Data di Scadenza"
@@ -383,7 +379,6 @@ msgstr "Scadenza: 1 mese"
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__expired
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__expired
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Expired"
 msgstr "Scaduto"
@@ -392,7 +387,6 @@ msgstr "Scaduto"
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__expiring
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__expiring
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Expiring"
 msgstr "In Scadenza"
@@ -403,7 +397,7 @@ msgstr "In Scadenza"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Expiring Date"
-msgstr "Data di Scadenza"
+msgstr "Data Scadenza"
 
 #. module: gima_partner
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__type__fgas_company_licence
@@ -573,11 +567,17 @@ msgstr "Nome"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "No certificates found"
 msgstr "Attestato in attesa"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
+msgid "No results were found for your search."
+msgstr "Non sono stati trovati risultati per la tua ricerca."
 
 #. module: gima_partner
 #. odoo-python
@@ -601,7 +601,6 @@ msgstr "Piattoforma con formatore"
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__partner_id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__partner_id
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #, python-format
 msgid "Partner"
@@ -657,12 +656,22 @@ msgstr "Prezzo di vendita"
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "Search in Certification"
-msgstr "Cerca tra le certificazioni"
+msgstr "Cerca il numero dell'attestato"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "Search in Courses"
+msgstr ""
 
 #. module: gima_partner
 #. odoo-python
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
@@ -672,10 +681,9 @@ msgstr "Cerca tra i dipendenti"
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__start_date
 msgid "Start Date"
-msgstr "Data di Inizio"
+msgstr "Data Inizio"
 
 #. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 msgid "Start date"
 msgstr "Data di Inizio"
@@ -687,7 +695,6 @@ msgstr "Data di Inizio"
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__state
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__state
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #, python-format
@@ -698,21 +705,6 @@ msgstr "Stato"
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
 msgid "Stay updated on professional development through ECM courses"
 msgstr "Rimani aggiornato sullo sviluppo professionale attraverso corsi ECM"
-
-#. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
-msgid "There are currently no certifications for your company."
-msgstr "Attualmente non ci sono certificazioni per la tua azienda."
-
-#. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
-msgid "There are currently no courses and certification for this company."
-msgstr "Non ci sono corsi o certificazioni da mostrare."
-
-#. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
-msgid "There are currently no sales orders for your account."
-msgstr ""
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_management_home
@@ -743,7 +735,6 @@ msgstr "Ricerca formazione"
 #: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #, python-format
 msgid "Type"
 msgstr "Tipologia"
@@ -772,7 +763,6 @@ msgstr ""
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__valid
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__valid
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_certification_list
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_courses_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Valid"
 msgstr "Valido"
@@ -795,7 +785,7 @@ msgstr "Visualizza Certificazioni"
 #. module: gima_partner
 #: model:ir.ui.menu,name:gima_partner.gima_all_courses_available_menu_config
 msgid "View Course Available"
-msgstr "Visualizza Corsi Disponibili"
+msgstr "Visualizza corsi disponibili"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner

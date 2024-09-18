@@ -12,6 +12,7 @@
         "views/gima_macro_course_views.xml",
         "views/res_partner_views.xml",
         "views/gima_course_views.xml",
+        "views/gima_macro_certification_views.xml",
         "views/gima_certifications_views.xml",
         "views/gima_training_views.xml",
         "views/gima_promoter_views.xml",

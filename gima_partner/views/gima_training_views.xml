@@ -185,7 +185,10 @@
         </t>
     </template>
 
-    <template id="portal_my_courses" name="Training Company">
+    <template id="portal_my_courses">
+        <t t-set="title">
+            <t t-esc="page_name"/>
+        </t>
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -193,7 +196,7 @@
                 <t t-set="title">Courses</t>
             </t>
             <div t-if="not trainings" class="alert alert-warning" role="alert">
-                There are currently no sales orders for your account.
+                No results were found for your search.
             </div>
             <t t-if="trainings" t-call="portal.portal_table">
                 <thead>
@@ -273,100 +276,7 @@
                     </tr>
                 </t>
             </t>
-            <!--            <t t-call="gima_partner.portal_courses_list"/>-->
         </t>
     </template>
 
-    <template id="portal_courses_list">
-        <table class="table table-sm">
-            <thead class="bg-100" style="border: 2px solid #2f2f6d;">
-                <tr class="active">
-                    <th class="text-left">Type</th>
-                    <!--                    TIPOLOGIA-->
-                    <th class="text-left">Course</th>
-                    <th class="text-center">Partner</th>
-                    <!--                    DIPENDENTE-->
-                    <th class="text-center">Duration</th>
-                    <th class="text-center">Start date</th>
-                    <!--                    Data Inizio-->
-                    <th class="text-center">End date</th>
-                    <!--                    Data Scadenza-->
-                    <th class="text-center">State</th>
-                    <th class="text-center">Download Certificate</th>
-                    <th/>
-                </tr>
-            </thead>
-            <t t-foreach="grouped_course" t-as="courses">
-                <tbody>
-                    <tr t-if="groupby in ('all', 'type')">
-                        <th class="text-start" colspan="12"
-                            style="background-color: #F3F2F2; color: #2f2f6d; font-weight: bold !important;'">
-                            <t t-if="'9001' in certifications['type_key']">
-                                <img src="/gima_partner/static/src/img/iso_icon.svg"
-                                     style="height: 40px; margin-left: 5px;"/>
-                            </t>
-                            <t t-if="'fgas' in certifications['type_key']">
-                                <img src="/gima_partner/static/src/img/f_gas_certification.png"
-                                     style="height: 40px; margin-left: 5px;"/>
-                            </t>
-                            <em class="font-weight-normal" t-out="certifications['type']"/>
-                        </th>
-                    </tr>
-                    <t t-foreach="certifications['certifications']" t-as="certification">
-                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'background-color: #8B0000; color: white; font-weight: bold !important;' or ''}">
-                            <td class="text-left">
-                                <t t-out="certification.certificate_number"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.partner_id.name"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.type"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.date_of_issue"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.expiration_date"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-if="certification.state == 'valid'" class="badge rounded-pill text-bg-success">
-                                    Valid
-                                </span>
-                                <span t-if="certification.state == 'expiring'"
-                                      class="badge rounded-pill text-bg-warning">
-                                    Expiring
-                                </span>
-                                <span t-if="certification.state == 'expired'" class="badge rounded-pill text-bg-danger">
-                                    Expired
-                                </span>
-                            </td>
-                            <td class="text-center">
-                                <t t-if="certification.attachment_ids">
-                                    <a t-attf-href="/download/certificate/{{ certification.id }}">
-                                        <i class="fa fa-download" aria-hidden="true"/>
-                                    </a>
-                                </t>
-                                <t t-else="">
-                                    No certificates found
-                                </t>
-                            </td>
-                            <td>
-                                <t t-if="certification.state == 'expiring'">
-                                    <i role="alert" class="fa fa-exclamation-triangle text-warning mx-2"/>
-                                </t>
-                            </td>
-                        </tr>
-                    </t>
-                </tbody>
-                <t t-foreach="range(2)" t-as="row">
-                    <tr>
-                        <t t-foreach="range(8)" t-as="cell">
-                            <td/>
-                        </t>
-                    </tr>
-                </t>
-            </t>
-        </table>
-    </template>
 </odoo>

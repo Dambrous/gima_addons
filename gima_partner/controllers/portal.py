@@ -15,7 +15,7 @@ class GimaPortal(portal.CustomerPortal):
     def _get_certification_searchbar_sortings(self):
         return {
             "certificate_number": {
-                "label": _("Certification Number"),
+                "label": _("Certificate Number"),
                 "certification": "certificate_number asc",
             },
             "partner_id": {"label": _("Partner"), "certification": "partner_id asc"},
@@ -289,6 +289,118 @@ class GimaPortal(portal.CustomerPortal):
 
     # -------------------------- COURSES-TRAINING
 
+    def _get_training_employee_searchbar_sortings(self):
+        return {
+            "partner": {"input": "partner_id", "label": _("Search in Partner")},
+            "course": {
+                "input": "course_id",
+                "label": _("Search in Courses"),
+            },
+        }
+
+    def _prepare_training_domain(self, partner):
+        return [("partner_id", "in", partner.child_ids.ids)]
+
+    def _prepare_training_portal_rendering_values(
+            self,
+            page=1,
+            date_begin=None,
+            date_end=None,
+            sortby=None,
+            groupby=None,
+            filterby=None,
+            search_in=None,
+            search=None,
+            **kwargs,
+    ):
+
+        model = "gima.training"
+        GimaTraining = request.env[model]
+        if not search_in:
+            search_in = "partner_id"
+        values = self._prepare_portal_layout_values()
+        partner = request.env.user.partner_id
+        partner_ids = partner.child_ids.ids
+        if kwargs.get('course_type'):
+            macro_course_obj = request.env['gima.macro.course'].search([('code', '=', kwargs.get('course_type'))],
+                                                                       limit=1)
+            values['course_type'] = kwargs.get('course_type')
+
+        values['type'] = 'training'
+        values['partner_id'] = partner
+        domain = self._prepare_training_domain(partner)
+        if macro_course_obj:
+            domain += [
+                ("type_course_id", "=", macro_course_obj.id)
+            ]
+            values['page_name'] = macro_course_obj.name + " | GIMA Progetti"
+            values['macro_course'] = macro_course_obj.name
+        searchbar_inputs = self._get_training_employee_searchbar_sortings()
+
+        # search
+        if search and search_in:
+            search_domain = []
+            if search_in == "partner_id":
+                partners = (
+                    request.env["res.partner"]
+                    .sudo()
+                    .search([("name", "ilike", search)])
+                )
+                search_domain = OR(
+                    [search_domain, [("partner_id", "in", partners.ids)]]
+                )
+            if search_in == "course_id":
+                courses = (
+                    request.env["gima.course"]
+                    .sudo()
+                    .search([("name", "ilike", search)])
+                )
+                search_domain = OR(
+                    [
+                        search_domain,
+                        [
+                            ("course_id", "in", courses.ids),
+                        ],
+                    ]
+                )
+            # if search_in == "certificate_number":
+            #     search_domain = OR(
+            #         [search_domain, [("certificate_number", "ilike", search)]]
+            #     )
+            domain = AND([domain, search_domain])
+
+        url = "/my/company_training/" + str(kwargs.get("course_type"))
+        pager_values = portal_pager(
+            url=url,
+            total=GimaTraining.search_count(domain),
+            page=page,
+            step=20,
+            url_args={
+                "search_in": search_in,
+                "search": search,
+            },
+        )
+
+        trainings = GimaTraining.search(
+            domain, limit=20, offset=pager_values["offset"]
+        )
+
+        # for certification in types_group_list:
+        #     if certification.get('type'):
+        #         certification['type'] = _._get_translation(certification['type'])
+        values.update(
+            {
+                "trainings": trainings,
+                "pager": pager_values,
+                "default_url": url,
+                "searchbar_inputs": searchbar_inputs,
+                "search_in": search_in,
+                "search": search,
+            }
+        )
+
+        return values
+
     @http.route(["/my/company_training"], type="http", auth="user", website=True)
     def my_training_home(self, **kwargs):
         values = self._prepare_portal_layout_values()
@@ -306,14 +418,7 @@ class GimaPortal(portal.CustomerPortal):
         website=True,
     )
     def my_training_course(self, **kwargs):
-        values = self._prepare_portal_layout_values()
-        partner = request.env.user.partner_id
-        partner_ids = partner.child_ids.ids
-        course_type = kwargs.get("course_type")
-        macro_course_obj = request.env['gima.macro.course'].search([('code', '=', course_type)], limit=1)
-        # partner_id = request.env.user.partner_id
-        values['trainings'] = request.env['gima.training'].sudo().search(
-            [('partner_id', 'in', partner_ids), ('type_course_id', '=', macro_course_obj.id)])
+        values = self._prepare_training_portal_rendering_values(**kwargs)
         return request.render("gima_partner.portal_my_courses", values)
 
     # -------------------------- PROMOTER - PORTAL
