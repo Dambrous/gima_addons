@@ -56,7 +56,8 @@
         <field name="arch" type="xml">
             <search string="Training Search">
                 <group expand="0" name="group_by" string="Group By">
-                    <filter string="Group by  Course" name="group_by_course_id" domain="[]" context="{'group_by': 'course_id'}"/>
+                    <filter string="Group by  Course" name="group_by_course_id" domain="[]"
+                            context="{'group_by': 'course_id'}"/>
                 </group>
             </search>
         </field>
@@ -76,14 +77,16 @@
               action="action_view_training"
               sequence="5"/>
 
-    <template id="portal_layout_courses" name="Portal Layout">
+    <template id="portal_layout_courses">
         <t t-call="portal.frontend_layout">
             <t t-set="is_portal" t-value="True"/>
 
             <div id="wrap" class='o_portal_wrap'>
                 <div class="container pt-3">
                     <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
-                        <h3 class="my-3">My Courses</h3>
+                        <h3 class="my-3">Employee Training Management |
+                            <t t-esc="user_id.name"/>
+                        </h3>
                     </div>
                     <t t-out="0"/>
                 </div>
@@ -91,82 +94,94 @@
         </t>
     </template>
 
-    <template id="portal_my_training">
+    <template id="portal_my_training" name="Gestione Formazione Dipendenti">
         <t t-call="gima_partner.portal_layout_courses">
-            <div class="row g-2">
+            <div class="row">
                 <!-- Prima riga con due colonne -->
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon" t-value="'/gima_partner/static/src/img/work_safety_icon.svg'"/>
-                            <t t-set="title">Work Safety Courses</t>
-                            <t t-set="text">Learn about workplace safety protocols to minimize risks</t>
-                            <t t-set="url" t-value="'/my/company_training/work_safety'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'work_safety'"/>
-                        </t>
+                <t t-if="courses.get('work_safety')">
+                    <div class="col-12">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/work_safety_icon.svg'"/>
+                                <t t-set="title">Work Safety Courses</t>
+                                <t t-set="text">Learn about workplace safety protocols to minimize risks</t>
+                                <t t-set="url" t-value="'/my/company_training/work_safety'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'work_safety'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon"
-                               t-value="'/gima_partner/static/src/img/equipment_and_construction_icon.svg'"/>
-                            <t t-set="title">Equipment and Construction Site Safety Courses</t>
-                            <t t-set="text">Master the safe handling of equipment and construction sites</t>
-                            <t t-set="url" t-value="'/my/company_training/equipment_safety'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'equipment_safety'"/>
-                        </t>
+                </t>
+            </div>
+            <div class="row">
+                <t t-if="courses.get('equipment_safety')">
+                    <div class="col-12">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon"
+                                   t-value="'/gima_partner/static/src/img/equipment_and_construction_icon.svg'"/>
+                                <t t-set="title">Equipment and Construction Site Safety Courses</t>
+                                <t t-set="text">Master the safe handling of equipment and construction sites</t>
+                                <t t-set="url" t-value="'/my/company_training/equipment_safety'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'equipment_safety'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
+                </t>
             </div>
 
-            <div class="row g-2">
+            <div class="row">
                 <!-- Seconda riga con due colonne -->
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon" t-value="'/gima_partner/static/src/img/work_security_course_icon.svg'"/>
-                            <t t-set="title">ECM Courses</t>
-                            <t t-set="text">Stay updated on professional development through ECM courses</t>
-                            <t t-set="url" t-value="'/my/company_training/ecm'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'ecm'"/>
-                        </t>
+                <t t-if="courses.get('ecm')">
+                    <div class="col-12">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/work_security_course_icon.svg'"/>
+                                <t t-set="title">ECM Courses</t>
+                                <t t-set="text">Stay updated on professional development through ECM courses</t>
+                                <t t-set="url" t-value="'/my/company_training/ecm'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'ecm'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>
-                            <t t-set="title">HACCP Courses</t>
-                            <t t-set="text">Understand the key principles of food safety with HACCP training</t>
-                            <t t-set="url" t-value="'/my/company_training/haccp'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'haccp'"/>
-                        </t>
+                </t>
+            </div>
+            <div class="row">
+                <t t-if="courses.get('haccp')">
+                    <div class="col-12">
+                        <div class="o_portal_category row g-2 mt-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>
+                                <t t-set="title">HACCP Courses</t>
+                                <t t-set="text">Understand the key principles of food safety with HACCP training</t>
+                                <t t-set="url" t-value="'/my/company_training/haccp'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'haccp'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
+                </t>
             </div>
 
-            <div class="row g-2">
+            <div class="row mb-3">
                 <!-- Terza riga con un elemento a larghezza completa -->
-                <div class="col-12">
-                    <div class="o_portal_category row g-2 mt-3">
-                        <t t-call="portal.portal_docs_entry">
-                            <t t-set="icon" t-value="'/gima_partner/static/src/img/privacy_icon.svg'"/>
-                            <t t-set="title">Privacy Courses</t>
-                            <t t-set="text">Learn how to ensure privacy and data security</t>
-                            <t t-set="url" t-value="'/my/company_training/privacy'"/>
-                            <t t-set="config_card" t-value="True"/>
-                            <t t-set="course_type" t-value="'privacy'"/>
-                        </t>
+                <t t-if="courses.get('privacy')">
+                    <div class="col-12">
+                        <div class="o_portal_category row g-2 mb-3">
+                            <t t-call="portal.portal_docs_entry">
+                                <t t-set="icon" t-value="'/gima_partner/static/src/img/privacy_icon.svg'"/>
+                                <t t-set="title">Privacy Courses</t>
+                                <t t-set="text">Learn how to ensure privacy and data security</t>
+                                <t t-set="url" t-value="'/my/company_training/privacy'"/>
+                                <t t-set="config_card" t-value="True"/>
+                                <t t-set="course_type" t-value="'privacy'"/>
+                            </t>
+                        </div>
                     </div>
-                </div>
+                </t>
             </div>
-
-
         </t>
     </template>
 
@@ -177,7 +192,88 @@
             <t t-call="portal.portal_searchbar">
                 <t t-set="title">Courses</t>
             </t>
-            <t t-call="gima_partner.portal_courses_list"/>
+            <div t-if="not trainings" class="alert alert-warning" role="alert">
+                There are currently no sales orders for your account.
+            </div>
+            <t t-if="trainings" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th class="text-left">Course</th>
+                        <th class="text-left">Company employee</th>
+                        <th class="text-center d-none d-md-table-cell">Duration</th>
+                        <th class="text-center d-none d-md-table-cell">Start date</th>
+                        <th class="text-center d-none d-md-table-cell">End date</th>
+                        <th class="text-center">State</th>
+                        <th class="text-center d-md-none">Download</th>
+                        <th class="text-center d-none d-md-table-cell">Download Certificate</th>
+                        <!--                        <th>-->
+                        <!--                            <span class='d-none d-md-inline'>Sales Order #</span>-->
+                        <!--                            <span class='d-block d-md-none'>Ref.</span>-->
+                        <!--                        </th>-->
+                    </tr>
+                </thead>
+                <t t-foreach="trainings" t-as="training">
+                    <tr>
+                        <!--                        <td>-->
+                        <!--                            <a t-att-href="order.get_portal_url()">-->
+                        <!--                                <t t-out="order.name"/>-->
+                        <!--                            </a>-->
+                        <!--                        </td>-->
+                        <!--                        <td class="text-left">-->
+                        <!--                            <span t-field="training.type_course_id.name"/>-->
+                        <!--                        </td>-->
+                        <td class="text-left text-wrap text-break">
+                            <span t-field="training.course_id.name"/>
+                            <!--                            <span class='d-none d-md-inline' t-field="order.date_order"-->
+                            <!--                                  t-options="{'time_only': True}"/>-->
+                        </td>
+                        <td class="text-left text-wrap text-break">
+                            <span t-field="training.partner_id.name"/>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <span t-field="training.duration"/>&amp;nbsp;
+                            <span class='d-none d-md-inline' t-field="training.type_duration"/>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <span t-field="training.start_date" t-options="{'widget': 'date'}"/>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <span t-field="training.expiration_date" t-options="{'widget': 'date'}"/>
+                        </td>
+                        <td class="text-center">
+                            <t t-if="training.state == 'valid'" name="state_valid">
+                                <span class="badge rounded-pill text-bg-success">
+                                    <i class="fa fa-fw fa-check" aria-label="Valid" title="Valid" role="img"/>
+                                    <span class="d-none d-md-inline">Valid</span>
+                                </span>
+                            </t>
+                            <t t-elif="training.state == 'expiring'" name="state_expiring">
+                                <span class="badge rounded-pill text-bg-warning">
+                                    <i class="fa fa-fw fa-clock-o" aria-label="Expiring" title="Expiring" role="img"/>
+                                    <span class="d-none d-md-inline">Expiring</span>
+                                </span>
+                            </t>
+                            <t t-elif="training.state == 'expired'" name="state_expired">
+                                <span class="badge rounded-pill text-bg-danger">
+                                    <i class="fa fa-fw fa-times" aria-label="Expired" title="Expired" role="img"/>
+                                    <span class="d-none d-md-inline">Expired</span>
+                                </span>
+                            </t>
+                        </td>
+                        <td class="text-center">
+                            <t t-if="training.certificate_course_attachment_ids">
+                                <a t-attf-href="/download/certificate/{{ training._name }}/{{ training.id }}/{{ training.certificate_course_attachment_ids.ids }}">
+                                    <i class="fa fa-download" aria-hidden="true"/>
+                                </a>
+                            </t>
+                            <t t-else="">
+                                No certificates found
+                            </t>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <!--            <t t-call="gima_partner.portal_courses_list"/>-->
         </t>
     </template>
 
@@ -185,13 +281,16 @@
         <table class="table table-sm">
             <thead class="bg-100" style="border: 2px solid #2f2f6d;">
                 <tr class="active">
-                    <th class="text-left">Macro Group Course</th>
+                    <th class="text-left">Type</th>
+                    <!--                    TIPOLOGIA-->
                     <th class="text-left">Course</th>
                     <th class="text-center">Partner</th>
-                    <th class="text-center">Macro Group Course</th>
+                    <!--                    DIPENDENTE-->
                     <th class="text-center">Duration</th>
                     <th class="text-center">Start date</th>
+                    <!--                    Data Inizio-->
                     <th class="text-center">End date</th>
+                    <!--                    Data Scadenza-->
                     <th class="text-center">State</th>
                     <th class="text-center">Download Certificate</th>
                     <th/>

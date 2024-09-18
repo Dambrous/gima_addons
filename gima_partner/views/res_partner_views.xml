@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='sales_purchases']" position="after">
-                <page string="Training">
+                <page string="Training" invisible="is_company == False">
                     <group string="Company Training">
                     </group>
                     <field name="gima_training_ids">
@@ -24,7 +24,7 @@
                                 type="object" string="View Employees Training" class="btn-link" nolabel="1"/>
                     </span>
                 </page>
-                <page string="Certifications">
+                <page string="Certifications" invisible="is_company == False">
                     <group>
                         <field name="is_certified_fgas"/>
                         <field name="is_certified_iso_9001"/>
@@ -55,6 +55,7 @@
             </xpath>
             <xpath expr="//group[1]/group[1]" position="inside">
                 <field name="promoter_id" domain="[('is_promoter', '=', True)]" invisible="is_company != True"/>
+                <field name="gima_macro_course_ids" widget="many2many_tags"/>
             </xpath>
         </field>
     </record>

@@ -50,7 +50,8 @@
         </field>
     </record>
 
-    <template id="portal_view_certifications" name="My Certifications">
+    <template id="portal_view_certifications">
+        <t t-set="title">My Certifications</t>
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -99,7 +100,7 @@
             <div id="wrap" class='o_portal_wrap'>
                 <div class="container pt-3">
                     <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
-                        <h3 class="my-3">My Certifications</h3>
+                        <h3 class="my-3">Certification Management | <t t-esc="user_id.name"/></h3>
                     </div>
                     <t t-out="0"/>
                 </div>
@@ -107,7 +108,7 @@
         </t>
     </template>
 
-    <template id="portal_my_certifications" name="My Courses">
+    <template id="portal_my_certifications" name="Gestione Certificazioni">
         <t t-call="gima_partner.portal_layout_certifications">
             <div class="row g-2 mb-5">
                 <t t-if="user_id.is_certified_fgas">

@@ -57,4 +57,9 @@
         </xpath>
 
     </template>
+    <template id="portal_layout" inherit_id="portal.portal_layout" name="Portal Layout" priority="100">
+        <xpath expr="//h3[@class='my-3']" position="replace">
+            <h3 class="my-3">Company Management | <t t-esc="user_id.name"/></h3>
+        </xpath>
+    </template>
 </odoo>

@@ -11,6 +11,7 @@ class ResPartner(models.Model):
     is_promoter = fields.Boolean(string="Financial Promoter")
     promoter_id = fields.Many2one('res.partner')
     commission_percentage = fields.Float(string="Commission Percentage")
+    gima_macro_course_ids = fields.Many2many('gima.macro.course')
 
     @api.onchange('gima_certifications_ids')
     def _onchange_certification(self):

@@ -5,3 +5,4 @@ class GimaMacroCourse(models.Model):
     _name = "gima.macro.course"
 
     name = fields.Char(string='Name')
+    code = fields.Char()

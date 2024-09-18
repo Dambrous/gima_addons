@@ -292,6 +292,11 @@ class GimaPortal(portal.CustomerPortal):
     @http.route(["/my/company_training"], type="http", auth="user", website=True)
     def my_training_home(self, **kwargs):
         values = self._prepare_portal_layout_values()
+        # VISIBLITY OF BUTTONS IN PORTAL HOMEPAGE
+        courses = {}
+        for macro_course in request.env.user.partner_id.gima_macro_course_ids:
+            courses[macro_course.code] = True
+        values['courses'] = courses
         return request.render("gima_partner.portal_my_training", values)
 
     @http.route(
@@ -300,8 +305,15 @@ class GimaPortal(portal.CustomerPortal):
         auth="user",
         website=True,
     )
-    def my_training(self, **kwargs):
+    def my_training_course(self, **kwargs):
         values = self._prepare_portal_layout_values()
+        partner = request.env.user.partner_id
+        partner_ids = partner.child_ids.ids
+        course_type = kwargs.get("course_type")
+        macro_course_obj = request.env['gima.macro.course'].search([('code', '=', course_type)], limit=1)
+        # partner_id = request.env.user.partner_id
+        values['trainings'] = request.env['gima.training'].sudo().search(
+            [('partner_id', 'in', partner_ids), ('type_course_id', '=', macro_course_obj.id)])
         return request.render("gima_partner.portal_my_courses", values)
 
     # -------------------------- PROMOTER - PORTAL
