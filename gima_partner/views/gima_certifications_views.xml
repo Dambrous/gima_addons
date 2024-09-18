@@ -55,17 +55,87 @@
     </record>
 
     <template id="portal_view_certifications">
-        <t t-set="title">My Certifications</t>
+        <t t-set="title">
+            <t t-esc="page_name"/>
+        </t>
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
             <t t-call="portal.portal_searchbar">
-                <t t-set="title">Certifications</t>
+                <t t-set="title">Courses</t>
             </t>
             <div t-if="not grouped_certifications" class="alert alert-warning" role="alert">
                 No results were found for your search.
             </div>
-            <t t-if="grouped_certifications" t-call="gima_partner.portal_certification_list"/>
+            <t t-if="grouped_certifications" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+
+                        <th class="text-left">N°</th>
+                        <th class="text-center">Company employee</th>
+                        <th class="text-center">Type</th>
+                        <th class="text-center d-none d-md-table-cell">Start date</th>
+                        <th class="text-center d-none d-md-table-cell">End date</th>
+                        <th class="text-center">State</th>
+                        <th class="text-center d-none d-md-table-cell">Download Certificate</th>
+                    </tr>
+                </thead>
+                <t t-foreach="grouped_certifications" t-as="certification">
+                    <tr>
+                        <td class="text-left text-wrap text-break">
+                            <span t-field="certification.certificate_number"/>
+                        </td>
+                        <td class="text-left text-wrap text-break">
+                            <span t-field="certification.partner_id.name"/>
+                        </td>
+                        <td class="text-left text-wrap text-break">
+                            <span t-field="certification.type_certification_id"/>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <span t-field="certification.date_of_issue" t-options="{'widget': 'date'}"/>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <span t-field="certification.expiration_date" t-options="{'widget': 'date'}"/>
+                        </td>
+                        <td class="text-center ">
+                            <t t-if="certification.state == 'valid'" name="state_valid">
+                                <span class="badge rounded-pill text-bg-success">
+                                    <i class="fa fa-fw fa-check" aria-label="Valid" title="Valid" role="img"/>
+                                    <span class="d-none d-md-inline">Valid</span>
+                                </span>
+                            </t>
+                            <t t-elif="certification.state == 'expiring'" name="state_expiring">
+                                <span class="badge rounded-pill text-bg-warning">
+                                    <i class="fa fa-fw fa-clock-o" aria-label="Expiring" title="Expiring" role="img"/>
+                                    <span class="d-none d-md-inline">Expiring</span>
+                                </span>
+                            </t>
+                            <t t-elif="certification.state == 'waiting'" name="state_waiting">
+                                <span class="badge rounded-pill text-bg-info">
+                                    <i class="fa fa-fw fa-clock-o" aria-label="Waiting" title="Waiting" role="img"/>
+                                    <span class="d-none d-md-inline">Waiting</span>
+                                </span>
+                            </t>
+                            <t t-elif="certification.state == 'expired'" name="state_expired">
+                                <span class="badge rounded-pill text-bg-danger">
+                                    <i class="fa fa-fw fa-times" aria-label="Expired" title="Expired" role="img"/>
+                                    <span class="d-none d-md-inline">Expired</span>
+                                </span>
+                            </t>
+                        </td>
+                        <td class="text-center d-none d-md-table-cell">
+                            <t t-if="certification.certificate_attachment">
+                                <a t-attf-href="/download/certificate/{{ certification._name }}/{{ certification.id }}/{{ certification.certificate_attachment.id }}">
+                                    <i class="fa fa-download" aria-hidden="true"/>
+                                </a>
+                            </t>
+                            <t t-else="">
+                                No certificates found
+                            </t>
+                        </td>
+                    </tr>
+                </t>
+            </t>
         </t>
     </template>
 
@@ -75,7 +145,8 @@
         <field name="arch" type="xml">
             <search string="Certifications Search">
                 <group expand="0" name="group_by" string="Group By">
-                    <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type_certification_id'}"/>
+                    <filter string="Group by Type" name="group_by_type" domain="[]"
+                            context="{'group_by': 'type_certification_id'}"/>
                     <filter string="Group by Partner" name="group_by_partner" domain="[]"
                             context="{'group_by': 'partner_id'}"/>
                 </group>
@@ -97,10 +168,10 @@
               sequence="4"/>
 
     <menuitem id="gima_certifications_menu_config_2"
-          name="Gima Certifications"
-          parent="gima_partner.gima_certifications_menu_config"
-          action="action_view_all_certifications"
-          sequence="5"/>
+              name="Gima Certifications"
+              parent="gima_partner.gima_certifications_menu_config"
+              action="action_view_all_certifications"
+              sequence="5"/>
 
     <template id="portal_layout_certifications" name="Portal Layout">
         <t t-call="portal.frontend_layout">
@@ -109,7 +180,9 @@
             <div id="wrap" class='o_portal_wrap'>
                 <div class="container pt-3">
                     <div class="wrapper col-12 d-flex flex-wrap justify-content-between align-items-center">
-                        <h3 class="my-3">Certification Management | <t t-esc="user_id.name"/></h3>
+                        <h3 class="my-3">Certification Management |
+                            <t t-esc="user_id.name"/>
+                        </h3>
                     </div>
                     <t t-out="0"/>
                 </div>
@@ -155,109 +228,109 @@
         </t>
     </template>
 
-    <template id="portal_certification_list">
-        <table class="table">
-            <t t-if="grouped_certifications">
-                <thead class="bg-100" style="border: 2px solid #2f2f6d;">
-                    <tr class="active">
-                        <th class="text-left"/>
-                        <th class="text-left">
-                            <span class='d-none d-md-inline'>Certification #</span>
-                        </th>
-                        <th class="text-center">Partner</th>
-                        <th class="text-center">Type</th>
-                        <th class="text-center">Data of issue</th>
-                        <th class="text-center">Expiration date</th>
-                        <th class="text-center">State</th>
-                        <th class="text-center">Download Certificate</th>
-                        <th/>
-                    </tr>
-                </thead>
-            </t>
-            <t t-foreach="grouped_certifications" t-as="certifications">
-                <tbody>
-                    <tr t-if="groupby in ('all', 'type')">
-                        <th class="text-start" colspan="12"
-                            style="background-color: #F3F2F2; color: #2f2f6d; font-weight: bold !important;'">
-                            <t t-if="'9001' in certifications['type_key']">
-                                <img src="/gima_partner/static/src/img/iso_icon.svg"
-                                     style="height: 40px; margin-left: 5px;"/>
-                            </t>
-                            <t t-if="'fgas' in certifications['type_key']">
-                                <img src="/gima_partner/static/src/img/f_gas_certification.png"
-                                     style="height: 40px; margin-left: 5px;"/>
-                            </t>
-                            <em class="font-weight-normal" t-out="certifications['type']"/>
-                        </th>
-                    </tr>
-                    <t t-set="first_row" t-value="True"/>
-                    <t t-foreach="certifications['certifications']" t-as="certification">
-                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'color: #8B0000; font-weight: bold !important;' or ''}">
-<!--                            <t t-if="first_row">-->
-<!--                                <td class="text-left">-->
-<!--                                    <img src="/gima_partner/static/src/img/arrow_right_blue.svg"-->
-<!--                                         style="height: 20px; margin-left: 5px;"/>-->
-<!--                                </td>-->
-<!--                            </t>-->
-<!--                            <t t-else="">-->
-<!--                                <td/>-->
-<!--                            </t>-->
-                            <td/>
-                            <t t-set="first_row" t-value="False"/>
-                            <td class="text-left">
-                                <t t-out="certification.certificate_number"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.partner_id.name"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.type_certification_id"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.date_of_issue"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-field="certification.expiration_date"/>
-                            </td>
-                            <td class="text-center">
-                                <span t-if="certification.state == 'valid'" class="badge rounded-pill text-bg-success">
-                                    Valid
-                                </span>
-                                <span t-if="certification.state == 'expiring'"
-                                      class="badge rounded-pill text-bg-warning">
-                                    Expiring
-                                </span>
-                                <span t-if="certification.state == 'expired'" class="badge rounded-pill text-bg-danger">
-                                    Expired
-                                </span>
-                            </td>
-                            <td class="text-center">
-                                <t t-if="certification.attachment_ids">
-                                    <a t-attf-href="/download/certificate/{{ certification._name }}/{{ certification.id }}/{{ certification.attachment_ids.ids }}">
-                                        <i class="fa fa-download" aria-hidden="true"/>
-                                    </a>
-                                </t>
-                                <t t-else="">
-                                    No certificates found
-                                </t>
-                            </td>
-                            <td>
-                                <t t-if="certification.state == 'expiring'">
-                                    <i role="alert" class="fa fa-exclamation-triangle text-warning mx-2"/>
-                                </t>
-                            </td>
-                        </tr>
-                    </t>
-                </tbody>
-                <t t-foreach="range(1)" t-as="row">
-                    <tr>
-                        <t t-foreach="range(8)" t-as="cell">
-                            <td/>
-                        </t>
-                    </tr>
-                </t>
-            </t>
-        </table>
-    </template>
+    <!--    <template id="portal_certification_list">-->
+    <!--        <table class="table">-->
+    <!--            <t t-if="grouped_certifications">-->
+    <!--                <thead class="bg-100" style="border: 2px solid #2f2f6d;">-->
+    <!--                    <tr class="active">-->
+    <!--                        <th class="text-left"/>-->
+    <!--                            <th class="text-left">-->
+    <!--                                <span class='d-none d-md-inline'>Certification #</span>-->
+    <!--                            </th>-->
+    <!--                            <th class="text-center">Partner</th>-->
+    <!--                            <th class="text-center">Type</th>-->
+    <!--                            <th class="text-center">Data of issue</th>-->
+    <!--                            <th class="text-center">Expiration date</th>-->
+    <!--                            <th class="text-center">State</th>-->
+    <!--                            <th class="text-center">Download Certificate</th>-->
+    <!--                        <th/>-->
+    <!--                    </tr>-->
+    <!--                </thead>-->
+    <!--            </t>-->
+    <!--            <t t-foreach="grouped_certifications" t-as="certifications">-->
+    <!--                <tbody>-->
+    <!--                    <tr t-if="groupby in ('all', 'type')">-->
+    <!--                        <th class="text-start" colspan="12"-->
+    <!--                            style="background-color: #F3F2F2; color: #2f2f6d; font-weight: bold !important;'">-->
+    <!--                            <t t-if="'9001' in certifications['type_key']">-->
+    <!--                                <img src="/gima_partner/static/src/img/iso_icon.svg"-->
+    <!--                                     style="height: 40px; margin-left: 5px;"/>-->
+    <!--                            </t>-->
+    <!--                            <t t-if="'fgas' in certifications['type_key']">-->
+    <!--                                <img src="/gima_partner/static/src/img/f_gas_certification.png"-->
+    <!--                                     style="height: 40px; margin-left: 5px;"/>-->
+    <!--                            </t>-->
+    <!--                            <em class="font-weight-normal" t-out="certifications['type']"/>-->
+    <!--                        </th>-->
+    <!--                    </tr>-->
+    <!--                    <t t-set="first_row" t-value="True"/>-->
+    <!--                    <t t-foreach="certifications['certifications']" t-as="certification">-->
+    <!--                        <tr t-attf-style="#{(certification.state == 'expiring') and 'color: #B8860B; font-weight: bold !important;' or (certification.state == 'expired') and 'color: #8B0000; font-weight: bold !important;' or ''}">-->
+    <!--&lt;!&ndash;                            <t t-if="first_row">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <td class="text-left">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <img src="/gima_partner/static/src/img/arrow_right_blue.svg"&ndash;&gt;-->
+    <!--&lt;!&ndash;                                         style="height: 20px; margin-left: 5px;"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </td>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <t t-else="">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <td/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </t>&ndash;&gt;-->
+    <!--                            <td/>-->
+    <!--                            <t t-set="first_row" t-value="False"/>-->
+    <!--                            <td class="text-left">-->
+    <!--                                <t t-out="certification.certificate_number"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-field="certification.partner_id.name"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-field="certification.type_certification_id"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-field="certification.date_of_issue"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-field="certification.expiration_date"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-if="certification.state == 'valid'" class="badge rounded-pill text-bg-success">-->
+    <!--                                    Valid-->
+    <!--                                </span>-->
+    <!--                                <span t-if="certification.state == 'expiring'"-->
+    <!--                                      class="badge rounded-pill text-bg-warning">-->
+    <!--                                    Expiring-->
+    <!--                                </span>-->
+    <!--                                <span t-if="certification.state == 'expired'" class="badge rounded-pill text-bg-danger">-->
+    <!--                                    Expired-->
+    <!--                                </span>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <t t-if="certification.attachment_ids">-->
+    <!--                                    <a t-attf-href="/download/certificate/{{ certification._name }}/{{ certification.id }}/{{ certification.attachment_ids.ids }}">-->
+    <!--                                        <i class="fa fa-download" aria-hidden="true"/>-->
+    <!--                                    </a>-->
+    <!--                                </t>-->
+    <!--                                <t t-else="">-->
+    <!--                                    No certificates found-->
+    <!--                                </t>-->
+    <!--                            </td>-->
+    <!--                            <td>-->
+    <!--                                <t t-if="certification.state == 'expiring'">-->
+    <!--                                    <i role="alert" class="fa fa-exclamation-triangle text-warning mx-2"/>-->
+    <!--                                </t>-->
+    <!--                            </td>-->
+    <!--                        </tr>-->
+    <!--                    </t>-->
+    <!--                </tbody>-->
+    <!--                <t t-foreach="range(1)" t-as="row">-->
+    <!--                    <tr>-->
+    <!--                        <t t-foreach="range(8)" t-as="cell">-->
+    <!--                            <td/>-->
+    <!--                        </t>-->
+    <!--                    </tr>-->
+    <!--                </t>-->
+    <!--            </t>-->
+    <!--        </table>-->
+    <!--    </template>-->
 
 </odoo>

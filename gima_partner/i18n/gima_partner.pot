@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 16:07+0000\n"
-"PO-Revision-Date: 2024-09-18 16:07+0000\n"
+"POT-Creation-Date: 2024-09-18 16:53+0000\n"
+"PO-Revision-Date: 2024-09-18 16:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -774,12 +774,8 @@ msgid "View Course Available"
 msgstr ""
 
 #. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
-msgid "View Employees Training"
-msgstr ""
-
-#. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
+#: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "View Employees Training"
 msgstr ""
 
@@ -793,6 +789,12 @@ msgstr ""
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
 msgid "View your company's ISO 9001 certification report"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__waiting
+#: model:ir.model.fields.selection,name:gima_partner.selection__gima_training__state__waiting
+msgid "Waiting"
 msgstr ""
 
 #. module: gima_partner

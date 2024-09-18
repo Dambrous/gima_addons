@@ -18,8 +18,8 @@ class GimaPortal(portal.CustomerPortal):
                 "label": _("Certificate Number"),
                 "certification": "certificate_number asc",
             },
-            "partner_id": {"label": _("Partner"), "certification": "partner_id asc"},
-            "type": {"label": _("Type"), "certification": "type asc"},
+            "partner_id": {"label": _("Employee"), "certification": "partner_id asc"},
+            "type_certification_id": {"label": _("Type"), "certification": "type asc"},
             "date_of_issue": {
                 "label": _("Date of issue"),
                 "certification": "date_of_issue asc",
@@ -33,7 +33,9 @@ class GimaPortal(portal.CustomerPortal):
             "none": {"input": "none", "label": _("None")},
             "type": {"input": "type", "label": _("Type")},
         }, {
-            "all": {"label": _("All"), "domain": []},
+            "employees": {"label": _("Employees"),
+                          "domain": [('partner_id', 'in', request.env.user.partner_id.child_ids.ids)]},
+            "company": {"label": _("Company"), "domain": [('partner_id', '=', request.env.user.partner_id.id)]},
             "expiration_1_month: ": {
                 "label": _("Expiration: 1 month"),
                 "domain": [
@@ -75,31 +77,35 @@ class GimaPortal(portal.CustomerPortal):
 
         if not sortby:
             sortby = "partner_id"
-        if not groupby:
-            groupby = "type"
+        # if not groupby:
+        #     groupby = "type"
         if not filterby:
-            filterby = "all"
+            filterby = "employees"
         if not search_in:
             search_in = "partner_id"
         partner = request.env.user.partner_id
         values = self._prepare_portal_layout_values()
         domain = self._prepare_certification_domain(partner)
         if kwargs.get("type_certification") == "fgas":
+            certification_ids = request.env['gima.macro.certification'].search([('code', 'in', ('C-FGAS', 'E-FGAS'))])
             domain += [
-                ("type", "in", ("fgas_individual_licence", "fgas_company_licence"))
+                ("type_certification_id", "in", certification_ids.ids)
             ]
+            values['page_name'] = "FGAS | GIMA Progetti"
         if kwargs.get("type_certification") == "iso_9001":
-            domain += [("type", "=", ("9001_company_licence"))]
+            certification_ids = request.env['gima.macro.certification'].search([('code', '=', 'C-9001')])
+            domain += [("type_certification_id", "=", certification_ids.ids)]
+            values['page_name'] = "ISO 9001 | GIMA Progetti"
         searchbar_sortings, searchbar_groupby, searchbar_filters, searchbar_inputs = self._get_certification_searchbar_sortings()
 
         if filterby:
             domain += searchbar_filters[filterby]["domain"]
 
-        type_group_by = searchbar_groupby.get(groupby, {})
-        if groupby in ("type"):
-            type_group_by = type_group_by.get("input")
-        else:
-            type_group_by = ""
+        # type_group_by = searchbar_groupby.get(groupby, {})
+        # if groupby in ("type"):
+        #     type_group_by = type_group_by.get("input")
+        # else:
+        #     type_group_by = ""
 
         sort_order = searchbar_sortings[sortby]["certification"]
 
@@ -157,41 +163,42 @@ class GimaPortal(portal.CustomerPortal):
         gima_certifications = GimaCertifications.search(
             domain, order=sort_order, limit=20, offset=pager_values["offset"]
         )
-        if type_group_by:
-            types_group_list = [
-                {
-                    type_group_by: dict(g[0]._fields["type"].selection).get(g[0].type),
-                    str(type_group_by + "_key"): k,
-                    "certifications": GimaCertifications.concat(*g),
-                }
-                for k, g in groupbyeleme(gima_certifications, itemgetter(type_group_by))
-            ]
-        else:
-            types_group_list = [{"certifications": gima_certifications}]
-
-        for type_group in types_group_list:
-            type_group["priority"] = 10
-            type_key = type_group.get("type_key")
-            if type_key and "company" in type_key:
-                type_group["priority"] = 1
-        types_group_list = sorted(types_group_list, key=lambda x: x["priority"])
-        for certification in types_group_list:
-            if certification.get('type'):
-                certification['type'] = _._get_translation(certification['type'])
+        # if type_group_by:
+        #     types_group_list = [
+        #         {
+        #             type_group_by: dict(g[0]._fields["type"].selection).get(g[0].type),
+        #             str(type_group_by + "_key"): k,
+        #             "certifications": GimaCertifications.concat(*g),
+        #         }
+        #         for k, g in groupbyeleme(gima_certifications, itemgetter(type_group_by))
+        #     ]
+        # else:
+        #     types_group_list = [{"certifications": gima_certifications}]
+        #
+        # for type_group in types_group_list:
+        #     type_group["priority"] = 10
+        #     type_key = type_group.get("type_key")
+        #     if type_key and "company" in type_key:
+        #         type_group["priority"] = 1
+        # types_group_list = sorted(types_group_list, key=lambda x: x["priority"])
+        # for certification in types_group_list:
+        #     if certification.get('type'):
+        #         certification['type'] = _._get_translation(certification['type'])
         values.update(
             {
-                "grouped_certifications": types_group_list,
+                "grouped_certifications": gima_certifications,
                 "pager": pager_values,
                 "default_url": url,
                 "searchbar_sortings": searchbar_sortings,
-                "searchbar_groupby": searchbar_groupby,
+                # "searchbar_groupby": searchbar_groupby,
                 "searchbar_filters": searchbar_filters,
                 "searchbar_inputs": searchbar_inputs,
                 "sortby": sortby,
-                "groupby": groupby,
+                # "groupby": groupby,
                 "filterby": filterby,
                 "search_in": search_in,
                 "search": search,
+                "type": 'certification'
             }
         )
 

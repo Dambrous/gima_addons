@@ -72,6 +72,11 @@
                 <a t-attf-href="/my/company_training?{{ keep_query() }}">View Employees Training</a>
             </li>
         </xpath>
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li id="portal_breadcrumbs_certification" t-if="type == 'certification'" class="breadcrumb-item active">
+                <a t-attf-href="/my/company_certifications">Certification Management</a>
+            </li>
+        </xpath>
     </template>
 
 </odoo>
