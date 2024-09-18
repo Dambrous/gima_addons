@@ -5,7 +5,7 @@
         <field name="arch" type="xml">
             <tree string="Certifications">
                 <field name="partner_id"/>
-                <field name="type"/>
+                <field name="type_certification_id"/>
                 <field name="date_of_issue"/>
                 <field name="expiration_date"/>
                 <field name="state" widget="badge" decoration-success="state == 'valid'"
@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <tree string="Certifications">
                 <field name="partner_id"/>
-                <field name="type"/>
+                <field name="type_certification_id"/>
                 <field name="date_of_issue"/>
                 <field name="expiration_date"/>
                 <field name="state"/>
@@ -37,7 +37,7 @@
                 <sheet>
                     <group>
                         <field name="partner_id"/>
-                        <field name="type"/>
+                        <field name="type_certification_id"/>
                         <field name="certificate_number"/>
                         <field name="attachment_ids" widget="many2many_binary"/>
                         <field name="state"/>
@@ -71,7 +71,7 @@
         <field name="arch" type="xml">
             <search string="Certifications Search">
                 <group expand="0" name="group_by" string="Group By">
-                    <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                    <filter string="Group by Type" name="group_by_type" domain="[]" context="{'group_by': 'type_certification_id'}"/>
                     <filter string="Group by Partner" name="group_by_partner" domain="[]"
                             context="{'group_by': 'partner_id'}"/>
                 </group>
@@ -90,8 +90,13 @@
     <menuitem id="gima_certifications_menu_config"
               name="Gima Certifications"
               parent="contacts.menu_contacts"
-              action="action_view_all_certifications"
               sequence="4"/>
+
+    <menuitem id="gima_certifications_menu_config_2"
+          name="Gima Certifications"
+          parent="gima_partner.gima_certifications_menu_config"
+          action="action_view_all_certifications"
+          sequence="5"/>
 
     <template id="portal_layout_certifications" name="Portal Layout">
         <t t-call="portal.frontend_layout">
@@ -202,7 +207,7 @@
                                 <span t-field="certification.partner_id.name"/>
                             </td>
                             <td class="text-center">
-                                <span t-field="certification.type"/>
+                                <span t-field="certification.type_certification_id"/>
                             </td>
                             <td class="text-center">
                                 <span t-field="certification.date_of_issue"/>

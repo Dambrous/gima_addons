@@ -32,6 +32,6 @@
           name="View All Macro Certifications"
           parent="gima_partner.gima_certifications_menu_config"
           action="action_view_certification_course"
-          sequence="2"/>
+          sequence="10"/>
 
 </odoo>

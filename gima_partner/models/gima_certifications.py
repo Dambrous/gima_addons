@@ -6,14 +6,8 @@ class GimaCertifications(models.Model):
     _name = "gima.certifications"
 
     partner_id = fields.Many2one("res.partner")
-    type = fields.Selection(
-        [
-            ("fgas_individual_licence", "F-GAS Individual Licence"),
-            ("fgas_company_licence", "F-GAS Company Licence"),
-            ("9001_company_licence", "Company Certification 9001"),
-        ],
-        required=True,
-        string="Type Certification",
+    type_certification_id = fields.Many2one(
+        'gima.macro.certification', string="Type Certification", required=True
     )
     certificate_attachment = fields.Binary(string="Certificate Attachment")
     # SOLO PATENTINO/9001/FGAS AZIEDNDALE

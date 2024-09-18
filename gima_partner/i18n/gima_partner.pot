@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 15:17+0000\n"
-"PO-Revision-Date: 2024-09-18 15:17+0000\n"
+"POT-Creation-Date: 2024-09-18 16:01+0000\n"
+"PO-Revision-Date: 2024-09-18 16:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,21 +79,17 @@ msgid "Certificate Attachment"
 msgstr ""
 
 #. module: gima_partner
+#. odoo-python
+#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_partner/controllers/portal.py:0
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__certificate_number
+#, python-format
 msgid "Certificate Number"
 msgstr ""
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout_certifications
 msgid "Certification Management |"
-msgstr ""
-
-#. module: gima_partner
-#. odoo-python
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
-#, python-format
-msgid "Certification Number"
 msgstr ""
 
 #. module: gima_partner
@@ -129,6 +125,7 @@ msgid "Click here to monitor the training employee courses"
 msgstr ""
 
 #. module: gima_partner
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__code
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__code
 msgid "Code"
 msgstr ""
@@ -223,6 +220,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__create_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__create_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__create_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__create_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__create_uid
 msgid "Created by"
@@ -231,6 +229,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__create_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__create_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__create_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__create_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__create_date
 msgid "Created on"
@@ -269,6 +268,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__display_name
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__display_name
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__display_name
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__display_name
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__display_name
 msgid "Display Name"
@@ -412,6 +412,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:gima_partner.field_res_partner__gima_certifications_ids
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__gima_certifications_ids
 #: model:ir.ui.menu,name:gima_partner.gima_certifications_menu_config
+#: model:ir.ui.menu,name:gima_partner.gima_certifications_menu_config_2
 msgid "Gima Certifications"
 msgstr ""
 
@@ -477,6 +478,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__id
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__id
 msgid "ID"
@@ -490,6 +492,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__write_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__write_uid
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__write_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__write_uid
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__write_uid
 msgid "Last Updated by"
@@ -498,6 +501,7 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__write_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__write_date
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__write_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__write_date
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__write_date
 msgid "Last Updated on"
@@ -516,6 +520,11 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__location
 msgid "Location"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.actions.act_window,name:gima_partner.action_view_certification_course
+msgid "Macro Certifications"
 msgstr ""
 
 #. module: gima_partner
@@ -546,6 +555,7 @@ msgstr ""
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_course__name
+#: model:ir.model.fields,field_description:gima_partner.field_gima_macro_certification__name
 #: model:ir.model.fields,field_description:gima_partner.field_gima_macro_course__name
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__name
 msgid "Name"
@@ -759,6 +769,11 @@ msgid "Valid certifications"
 msgstr ""
 
 #. module: gima_partner
+#: model:ir.ui.menu,name:gima_partner.gima_macro_certification_menu_config
+msgid "View All Macro Certifications"
+msgstr ""
+
+#. module: gima_partner
 #: model:ir.ui.menu,name:gima_partner.gima_macro_course_menu_config
 msgid "View All Macro Courses"
 msgstr ""
@@ -776,6 +791,11 @@ msgstr ""
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "View Employees Training"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
+msgid "View Employees Training |"
 msgstr ""
 
 #. module: gima_partner
@@ -803,6 +823,11 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model,name:gima_partner.model_gima_course
 msgid "gima.course"
+msgstr ""
+
+#. module: gima_partner
+#: model:ir.model,name:gima_partner.model_gima_macro_certification
+msgid "gima.macro.certification"
 msgstr ""
 
 #. module: gima_partner
