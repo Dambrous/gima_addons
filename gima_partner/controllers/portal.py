@@ -19,7 +19,7 @@ class GimaPortal(portal.CustomerPortal):
                 "certification": "certificate_number asc",
             },
             "partner_id": {"label": _("Employee"), "certification": "partner_id asc"},
-            "type_certification_id": {"label": _("Type"), "certification": "type asc"},
+            "type_certification_id": {"label": _("Type"), "certification": "type_certification_id asc"},
             "date_of_issue": {
                 "label": _("Date of issue"),
                 "certification": "date_of_issue asc",
@@ -31,22 +31,22 @@ class GimaPortal(portal.CustomerPortal):
             "State": {"label": _("State"), "certification": "state asc"},
         }, {
             "none": {"input": "none", "label": _("None")},
-            "type": {"input": "type", "label": _("Type")},
+            "type_certification_id": {"input": "type", "label": _("Type")},
         }, {
             "employees": {"label": _("Employees"),
                           "domain": [('partner_id', 'in', request.env.user.partner_id.child_ids.ids)]},
             "company": {"label": _("Company"), "domain": [('partner_id', '=', request.env.user.partner_id.id)]},
-            "expiration_1_month: ": {
-                "label": _("Expiration: 1 month"),
-                "domain": [
-                    ("expiration_date", "!=", False),
-                    (
-                        "expiration_date",
-                        "<=",
-                        (datetime.datetime.now() + relativedelta(months=2)).date(),
-                    ),
-                ],
-            },
+            # "expiration_1_month: ": {
+            #     "label": _("Expiration: 1 month"),
+            #     "domain": [
+            #         ("expiration_date", "!=", False),
+            #         (
+            #             "expiration_date",
+            #             "<=",
+            #             (datetime.datetime.now() + relativedelta(months=2)).date(),
+            #         ),
+            #     ],
+            # },
         }, {
             "partner": {"input": "partner_id", "label": _("Search in Partner")},
             "certificate_number": {
@@ -74,18 +74,21 @@ class GimaPortal(portal.CustomerPortal):
     ):
         model = "gima.certifications"
         GimaCertifications = request.env[model]
-
+        partner = request.env.user.partner_id
+        # domain = self._prepare_certification_domain(partner)
+        domain = []
         if not sortby:
             sortby = "partner_id"
         # if not groupby:
         #     groupby = "type"
         if not filterby:
-            filterby = "employees"
+            if kwargs.get("type_certification") == "fgas":
+                filterby = "employees"
+            if kwargs.get("type_certification") == "iso_9001":
+                filterby = "company"
         if not search_in:
             search_in = "partner_id"
-        partner = request.env.user.partner_id
         values = self._prepare_portal_layout_values()
-        domain = self._prepare_certification_domain(partner)
         if kwargs.get("type_certification") == "fgas":
             certification_ids = request.env['gima.macro.certification'].search([('code', 'in', ('C-FGAS', 'E-FGAS'))])
             domain += [
@@ -94,7 +97,7 @@ class GimaPortal(portal.CustomerPortal):
             values['page_name'] = "FGAS | GIMA Progetti"
         if kwargs.get("type_certification") == "iso_9001":
             certification_ids = request.env['gima.macro.certification'].search([('code', '=', 'C-9001')])
-            domain += [("type_certification_id", "=", certification_ids.ids)]
+            domain += [("type_certification_id", "in", certification_ids.ids)]
             values['page_name'] = "ISO 9001 | GIMA Progetti"
         searchbar_sortings, searchbar_groupby, searchbar_filters, searchbar_inputs = self._get_certification_searchbar_sortings()
 
