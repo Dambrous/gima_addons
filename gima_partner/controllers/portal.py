@@ -431,6 +431,40 @@ class GimaPortal(portal.CustomerPortal):
         values = self._prepare_training_portal_rendering_values(**kwargs)
         return request.render("gima_partner.portal_my_courses", values)
 
+    # -------------------------- DOCUMENTS
+
+    @http.route(
+        ["/my/company_documents"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def my_company_documents(self, **kwargs):
+        return request.render("gima_partner.portal_my_documents")
+
+    def _prepare_documents_portal_rendering_values(self, **kwargs):
+        values = self._prepare_portal_layout_values()
+        values['page_name'] = "Documents | GIMA Progetti"
+        values['type'] = "documents"
+        if kwargs.get('type_document') == 'pos':
+            values['page_name'] = "POS | GIMA Progetti"
+        if kwargs.get('type_document') == 'dvr':
+            values['page_name'] = "DVR | GIMA Progetti"
+        if kwargs.get('type_document') == 'medical_visits':
+            values['page_name'] = (_("MEDICAL VISITS | GIMA Progetti"))
+        return values
+
+    @http.route(
+        ["/my/company_document/<type_document>",
+         "/my/company_document/<type_document>/page/<int:page>"],
+        type="http",
+        auth="user",
+        website=True,
+    )
+    def my_company_documents_all(self, **kwargs):
+        values = self._prepare_documents_portal_rendering_values(**kwargs)
+        return request.render("gima_partner.portal_view_certifications", values)
+
     # -------------------------- PROMOTER - PORTAL
 
     def _get_training_searchbar_sortings(self):

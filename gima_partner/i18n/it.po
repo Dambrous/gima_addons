@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 20:16+0000\n"
-"PO-Revision-Date: 2024-09-18 20:16+0000\n"
+"POT-Creation-Date: 2024-09-19 21:36+0000\n"
+"PO-Revision-Date: 2024-09-19 21:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -266,6 +266,11 @@ msgid "Created on"
 msgstr ""
 
 #. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "DVR"
+msgstr ""
+
+#. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Data of issue"
 msgstr "Data emissione"
@@ -302,6 +307,21 @@ msgstr "Giorni"
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
+msgid "Document Management"
+msgstr "Gestione Documenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout_documents
+msgid "Document Management |"
+msgstr "Gestione Documenti |"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_documents
+msgid "Documents"
+msgstr "Documenti"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
@@ -550,6 +570,19 @@ msgid "Location"
 msgstr "Posizione"
 
 #. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "MEDICAL VISITS"
+msgstr "VISITE MEDICHE"
+
+#. module: gima_partner
+#. odoo-python
+#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
+#: code:addons/gima_partner/controllers/portal.py:0
+#, python-format
+msgid "MEDICAL VISITS | GIMA Progetti"
+msgstr "VISITE MEDICHE | GIMA Progetti"
+
+#. module: gima_partner
 #: model:ir.actions.act_window,name:gima_partner.action_view_certification_course
 msgid "Macro Certifications"
 msgstr "Tipologia Certificazione"
@@ -594,6 +627,7 @@ msgstr "Attestato in attesa"
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_documents
 msgid "No results were found for your search."
 msgstr "Non sono stati trovati risultati per la tua ricerca."
 
@@ -611,6 +645,11 @@ msgstr "Nessuno"
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_course__course_location__online_with_teacher
 msgid "Online classroom with teacher"
 msgstr "Piattoforma con formatore"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "POS"
+msgstr ""
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__partner_id
@@ -722,8 +761,12 @@ msgstr "Rimani aggiornato sullo sviluppo professionale attraverso corsi ECM"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_training
-msgid "There are no training courses available. Please contact the administration for more information."
-msgstr "Non sono presenti corsi di formazione completati dai dipendenti. Si prega di contattare l'amministrazione per ulteriori informazioni."
+msgid ""
+"There are no training courses available. Please contact the administration "
+"for more information."
+msgstr ""
+"Non sono presenti corsi di formazione completati dai dipendenti. Si prega di"
+" contattare l'amministrazione per ulteriori informazioni."
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_management_home
@@ -812,9 +855,24 @@ msgstr "Visualizza corsi disponibili"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
+msgid "View Document Management"
+msgstr "Gestione Documenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_breadcrumbs
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "View Employees Training"
 msgstr "Visualizza Formazione Dipendenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "View the Operational Security Plan of your company and your employees"
+msgstr "Visualizza il piano operativo di sicurezza della tua azienda e dei tuoi dipendenti"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "View the company medical visit report"
+msgstr "Visualizza il rapporto delle visite mediche aziendali"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
@@ -829,6 +887,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_certifications
 msgid "View your company's ISO 9001 certification report"
 msgstr "Visualizza il report di certificazione ISO 9001 della tua azienda"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
+msgid "View your company's Risk Assessment Document"
+msgstr "Visualizza i documenti di valutazione dei rischi della tua azienda"
 
 #. module: gima_partner
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__waiting
