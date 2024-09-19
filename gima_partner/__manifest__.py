@@ -17,6 +17,8 @@
         "views/gima_training_views.xml",
         "views/gima_promoter_views.xml",
         "views/account_portal_templates_views.xml",
+        "views/reset_password_templates_email.xml",
+        "views/mail_notification_light_template.xml",
         "views/gima_documents_views.xml",
     ],
 }
