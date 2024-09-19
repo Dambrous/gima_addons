@@ -182,6 +182,11 @@
                     </div>
                 </t>
             </div>
+            <t t-if="not (courses.get('work_safety') or courses.get('equipment_safety') or courses.get('ecm') or courses.get('haccp') or courses.get('privacy'))">
+                <div class="alert alert-warning" role="alert">
+                    There are no training courses available. Please contact the administration for more information.
+                </div>
+            </t>
         </t>
     </template>
 
@@ -201,8 +206,8 @@
             <t t-if="trainings" t-call="portal.portal_table">
                 <thead>
                     <tr class="active">
-                        <th class="text-left">Course</th>
                         <th class="text-left">Company employee</th>
+                        <th class="text-left">Course</th>
                         <th class="text-center d-none d-md-table-cell">Duration</th>
                         <th class="text-center d-none d-md-table-cell">Start date</th>
                         <th class="text-center d-none d-md-table-cell">End date</th>
@@ -226,12 +231,12 @@
                         <!--                            <span t-field="training.type_course_id.name"/>-->
                         <!--                        </td>-->
                         <td class="text-left text-wrap text-break">
+                            <span t-field="training.partner_id.name"/>
+                        </td>
+                        <td class="text-left text-wrap text-break">
                             <span t-field="training.course_id.name"/>
                             <!--                            <span class='d-none d-md-inline' t-field="order.date_order"-->
                             <!--                                  t-options="{'time_only': True}"/>-->
-                        </td>
-                        <td class="text-left text-wrap text-break">
-                            <span t-field="training.partner_id.name"/>
                         </td>
                         <td class="text-center d-none d-md-table-cell">
                             <span t-field="training.duration"/>&amp;nbsp;
