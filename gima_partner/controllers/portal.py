@@ -1,6 +1,7 @@
 from odoo import http, fields, _
 from odoo.addons.portal.controllers import portal
 from odoo.http import request, content_disposition
+from odoo.addons.account.controllers.download_docs import _get_zip_headers
 from odoo.addons.portal.controllers.portal import pager as portal_pager
 import datetime
 from dateutil.relativedelta import relativedelta
@@ -12,6 +13,8 @@ from odoo.tools.translate import _
 
 
 class GimaPortal(portal.CustomerPortal):
+
+    # -------------------------- CERTIFICATIONS
     def _get_certification_searchbar_sortings(self):
         return {
             "certificate_number": {
@@ -265,36 +268,29 @@ class GimaPortal(portal.CustomerPortal):
         return filename
 
     @http.route(
-        ["/download/certificate/<model>/<int:certification_id>/<attachment_ids>"],
+        ["/download/attachment/<attachment_ids>"],
         type="http",
         auth="user",
         website=True,
     )
     def download_attachment(self, **kwargs):
         """
-        Certification_id can be used in gima.certifications and gima.training models
+        Certification_id can be used in all object models that have attachment_ids populated
         :param kwargs:
-            model --> gima.certifications/gima.training
             attachment_ids --> ids attachments
-            certification_id --> id of gima.certifications/gima.training
         """
         attachment_ids = eval(kwargs.get("attachment_ids"))
-        model = kwargs.get("model")
-        # CAN BE CERTIFICATION OR TRAINING --> gima_certification
-        gima_certification = request.env[model].browse(kwargs["certification_id"])
         attachments = request.env["ir.attachment"].sudo().browse(attachment_ids)
-        attachments.check_access_rights("read")
-        attachments.check_access_rule("read")
-        if len(attachment_ids) > 1:
+        if len(attachments) > 1:
             extension = ".zip"
-            filename = self.get_name_attachment(model, gima_certification, extension)
-            content = attachments._build_zip_from_attachments()
+            filename = f"allegati_{request.env.user.partner_id.name}{extension}"
+            content = attachments.sudo()._build_zip_from_attachments()
+            headers = _get_zip_headers(content, filename)
         else:
-            attachment = attachments[0]
-            extension = "." + attachment.mimetype.split("/")[1]
-            content = base64.b64decode(attachment.datas)
-            filename = self.get_name_attachment(model, gima_certification, extension)
-        headers = self._get_headers(content, filename, extension.replace(".", " "))
+            extension = "." + attachments.mimetype
+            content = base64.b64decode(attachments.datas)
+            filename = attachments.name
+            headers = self._get_headers(content, filename, extension)
         return request.make_response(content, headers)
 
     # -------------------------- COURSES-TRAINING

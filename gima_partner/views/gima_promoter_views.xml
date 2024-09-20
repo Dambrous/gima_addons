@@ -125,8 +125,8 @@
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <t t-if="training.certificate_course_attachment_ids">
-                                        <a t-attf-href="/download/certificate/{{ training.id }}">
+                                    <t t-if="training.attachment_ids">
+                                        <a t-attf-href="/download/attachment/{{ training.attachment_ids.ids }}">
                                             <i class="fa fa-download" aria-hidden="true"/>
                                         </a>
                                     </t>

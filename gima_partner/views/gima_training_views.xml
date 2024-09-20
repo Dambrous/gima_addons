@@ -17,7 +17,7 @@
                 <field name="state" widget="badge" decoration-success="state == 'valid'"
                        decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'"
                 />
-                <field name="certificate_course_attachment_ids" widget="many2many_binary"/>
+                <field name="attachment_ids" widget="many2many_binary"/>
             </tree>
         </field>
     </record>
@@ -42,7 +42,7 @@
                         <field name="location"/>
                         <field name="duration"/>
                         <field name="type_duration"/>
-                        <field name="certificate_course_attachment_ids" widget="many2many_binary"/>
+                        <field name="attachment_ids" widget="many2many_binary"/>
                         <field name="state"/>
                     </group>
                 </sheet>
@@ -269,8 +269,8 @@
                             </t>
                         </td>
                         <td class="text-center">
-                            <t t-if="training.certificate_course_attachment_ids">
-                                <a t-attf-href="/download/certificate/{{ training._name }}/{{ training.id }}/{{ training.certificate_course_attachment_ids.ids }}">
+                            <t t-if="training.attachment_ids">
+                                <a t-attf-href="/download/attachment/{{ training.attachment_ids.ids }}">
                                     <i class="fa fa-download" aria-hidden="true"/>
                                 </a>
                             </t>

@@ -17,7 +17,7 @@ class GimaTraining(models.Model):
     type_duration = fields.Selection(
         string="Duration Type", related="course_id.type_duration"
     )
-    certificate_course_attachment_ids = fields.Many2many("ir.attachment", string="Attachments")
+    attachment_ids = fields.Many2many("ir.attachment", string="Attachments")
     state = fields.Selection(
         [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired"), ("waiting", "Waiting")]
     )

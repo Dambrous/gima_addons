@@ -21,9 +21,9 @@ class ResPartner(models.Model):
             "name": "Certifications Found",
             "res_model": "gima.certifications",
             "type": "ir.actions.act_window",
-            "view_id": self.env.ref("gima_partner.view_certifications_tree_custom").id,
-            "view_mode": "tree",
+            "view_mode": "tree,form",
             "domain": [("id", "in", certifications.ids)],
+            "context": {"create": True, "edit": True}
         }
 
     def action_view_employees_training(self):

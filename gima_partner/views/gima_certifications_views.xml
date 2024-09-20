@@ -1,5 +1,6 @@
 <odoo>
-    <record id="view_certifications_tree_custom" model="ir.ui.view">
+
+    <record id="view_certifications_tree" model="ir.ui.view">
         <field name="name">certificazioni.tree</field>
         <field name="model">gima.certifications</field>
         <field name="arch" type="xml">
@@ -9,26 +10,8 @@
                 <field name="certificate_number"/>
                 <field name="date_of_issue"/>
                 <field name="expiration_date"/>
-                <field name="state" widget="badge" decoration-success="state == 'valid'"
-                       decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'"
-                />
-                <field name="certificate_attachment"/>
-            </tree>
-        </field>
-    </record>
-
-    <record id="view_certifications_tree" model="ir.ui.view">
-        <field name="name">certificazioni.tree</field>
-        <field name="model">gima.certifications</field>
-        <field name="arch" type="xml">
-            <tree string="Certifications">
-                <field name="partner_id"/>
-                <field name="type_certification_id"/>
-                <field name="certificate_number"/>
-                <field name="date_of_issue"/>
-                <field name="expiration_date"/>
                 <field name="state"/>
-                <field name="certificate_attachment"/>
+                <field name="attachment_ids" widget="many2many_binary"/>
             </tree>
         </field>
     </record>
@@ -124,8 +107,8 @@
                             </t>
                         </td>
                         <td class="text-center d-none d-md-table-cell">
-                            <t t-if="certification.certificate_attachment">
-                                <a t-attf-href="/download/certificate/{{ certification._name }}/{{ certification.id }}/{{ certification.certificate_attachment.id }}">
+                            <t t-if="certification.attachment_ids">
+                                <a t-attf-href="/download/attachment/{{ certification.attachment_ids.ids }}">
                                     <i class="fa fa-download" aria-hidden="true"/>
                                 </a>
                             </t>

@@ -90,7 +90,7 @@ msgstr "Niente"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__attachment_ids
-#: model:ir.model.fields,field_description:gima_partner.field_gima_training__certificate_course_attachment_ids
+#: model:ir.model.fields,field_description:gima_partner.field_gima_training__attachment_ids
 msgid "Attachments"
 msgstr "Allegati"
 

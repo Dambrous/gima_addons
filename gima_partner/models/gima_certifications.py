@@ -9,11 +9,10 @@ class GimaCertifications(models.Model):
     type_certification_id = fields.Many2one(
         'gima.macro.certification', string="Type Certification", required=True
     )
-    certificate_attachment = fields.Binary(string="Certificate Attachment")
     # SOLO PATENTINO/9001/FGAS AZIEDNDALE
     # FACCIO IL PATENTINO A GIUGNO, OGNI ANNO DEVO RINNOVARLO PAGANDO(APAVE)
     certificate_number = fields.Char(string="Certificate Number")
-    attachment_ids = fields.Many2many("ir.attachment", string="Attachments")
+    attachment_ids = fields.Many2many('ir.attachment', string='Attachments')
     state = fields.Selection(
         [("valid", "Valid"), ("expiring", "Expiring"), ("expired", "Expired"), ("waiting", "Waiting")]
     )
