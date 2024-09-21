@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 21:36+0000\n"
-"PO-Revision-Date: 2024-09-19 21:36+0000\n"
+"POT-Creation-Date: 2024-09-21 13:47+0000\n"
+"PO-Revision-Date: 2024-09-21 13:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -81,23 +81,10 @@ msgstr ""
 "                                </span>"
 
 #. module: gima_partner
-#. odoo-python
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
-#, python-format
-msgid "All"
-msgstr "Niente"
-
-#. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__attachment_ids
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__attachment_ids
 msgid "Attachments"
 msgstr "Allegati"
-
-#. module: gima_partner
-#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__certificate_attachment
-msgid "Certificate Attachment"
-msgstr "Allegato attestato"
 
 #. module: gima_partner
 #. odoo-python
@@ -123,7 +110,6 @@ msgstr "Gestione Certificazioni |"
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_form
 #: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree
-#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree_custom
 msgid "Certifications"
 msgstr "Certificazioni"
 
@@ -175,11 +161,6 @@ msgid "Company Certifications"
 msgstr "Certificazioni aziendali"
 
 #. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
-msgid "Company Management"
-msgstr "Gestione Azienda"
-
-#. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout
 msgid "Company Management |"
 msgstr "Gestione Azienda |"
@@ -196,6 +177,7 @@ msgstr "Gestione Certificazioni"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
 msgid "Company employee"
 msgstr "Dipendente"
@@ -208,8 +190,6 @@ msgstr ""
 #. module: gima_partner
 #. odoo-python
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__course_id
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
@@ -404,21 +384,9 @@ msgstr "Corsi sicurezza attrezzature e cantiere"
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__expiration_date
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Expiration Date"
 msgstr "Data di fine"
-
-#. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#. module: gima_partner
-#. odoo-python
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
-#, python-format
-msgid "Expiration: 1 month"
-msgstr "Scadenza: 1 mese"
 
 #. module: gima_partner
 #: model:ir.model.fields.selection,name:gima_partner.selection__gima_certifications__state__expired
@@ -634,8 +602,6 @@ msgstr "Non sono stati trovati risultati per la tua ricerca."
 #. module: gima_partner
 #. odoo-python
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "None"
@@ -654,7 +620,6 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__partner_id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__partner_id
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Partner"
 msgstr "Azienda/Dipendente"
 
@@ -685,6 +650,16 @@ msgstr "Prezzo di vendita"
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "Promoter"
 msgstr "Promotore"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
+msgid "Promoter Management"
+msgstr "Gestione Aziende"
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout
+msgid "Promoter Management |"
+msgstr "Promotore |"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout_my_companies
@@ -867,7 +842,9 @@ msgstr "Visualizza Formazione Dipendenti"
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents
 msgid "View the Operational Security Plan of your company and your employees"
-msgstr "Visualizza il piano operativo di sicurezza della tua azienda e dei tuoi dipendenti"
+msgstr ""
+"Visualizza il piano operativo di sicurezza della tua azienda e dei tuoi "
+"dipendenti"
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_documents

@@ -23,13 +23,13 @@
                         <t t-set="url" t-value="'/my/account'"/>
                         <t t-set="config_card" t-value="True"/>
                     </t>
-<!--                    <t t-call="portal.portal_docs_entry">-->
-<!--                        <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>-->
-<!--                        <t t-set="title">Connection &amp; Security</t>-->
-<!--                        <t t-set="text">Configure your connection parameters</t>-->
-<!--                        <t t-set="url" t-value="'/my/security'"/>-->
-<!--                        <t t-set="config_card" t-value="True"/>-->
-<!--                    </t>-->
+                    <!--                    <t t-call="portal.portal_docs_entry">-->
+                    <!--                        <t t-set="icon" t-value="'/portal/static/src/img/portal-connection.svg'"/>-->
+                    <!--                        <t t-set="title">Connection &amp; Security</t>-->
+                    <!--                        <t t-set="text">Configure your connection parameters</t>-->
+                    <!--                        <t t-set="url" t-value="'/my/security'"/>-->
+                    <!--                        <t t-set="config_card" t-value="True"/>-->
+                    <!--                    </t>-->
                 </div>
             </div>
         </div>
@@ -45,6 +45,12 @@
     </template>
 
     <template id="portal_my_home_inherit" name="Gestione Azienda">
+        <t t-if="user_id.is_company">
+            <t t-set="title">Company Management | GIMA Progetti</t>
+        </t>
+        <t t-if="user_id.is_promoter">
+            <t t-set="title">Promoter Management | GIMA Progetti</t>
+        </t>
         <t t-call="portal.portal_layout">
             <t t-set="my_details" t-value="True"/>
             <t t-call="portal.portal_my_home"/>

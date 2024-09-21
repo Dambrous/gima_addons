@@ -46,11 +46,10 @@
             </t>
             <t t-if="user_id.is_promoter">
                 <div class="o_portal_category row g-2 mt-3">
-                    <t t-call="portal.portal_docs_entry" t-if="False"/>
                     <t t-call="portal.portal_docs_entry">
                         <t t-set="icon" t-value="'/gima_partner/static/src/img/companies_icon.svg'"/>
-                        <t t-set="title">Company Management</t>
-                        <t t-set="url" t-value="'/my/company_management'"/>
+                        <t t-set="title">Promoter Management</t>
+                        <t t-set="url" t-value="'/my/promoter_management'"/>
                         <t t-set="config_card" t-value="True"/>
                     </t>
                 </div>
@@ -66,9 +65,16 @@
     </template>
     <template id="portal_layout" inherit_id="portal.portal_layout" name="Portal Layout" priority="100">
         <xpath expr="//h3[@class='my-3']" position="replace">
-            <h3 class="my-3">Company Management |
-                <t t-esc="user_id.name"/>
-            </h3>
+            <t t-if="user_id.is_company">
+                <h3 class="my-3">Company Management |
+                    <t t-esc="user_id.name"/>
+                </h3>
+            </t>
+            <t t-if="user_id.is_promoter">
+                <h3 class="my-3">Promoter Management |
+                    <t t-esc="user_id.name"/>
+                </h3>
+            </t>
         </xpath>
     </template>
 

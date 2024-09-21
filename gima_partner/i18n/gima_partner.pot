@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 21:35+0000\n"
-"PO-Revision-Date: 2024-09-19 21:35+0000\n"
+"POT-Creation-Date: 2024-09-21 13:47+0000\n"
+"PO-Revision-Date: 2024-09-21 13:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,22 +65,9 @@ msgid ""
 msgstr ""
 
 #. module: gima_partner
-#. odoo-python
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
-#, python-format
-msgid "All"
-msgstr ""
-
-#. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__attachment_ids
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__attachment_ids
 msgid "Attachments"
-msgstr ""
-
-#. module: gima_partner
-#: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__certificate_attachment
-msgid "Certificate Attachment"
 msgstr ""
 
 #. module: gima_partner
@@ -107,7 +94,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_form
 #: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree
-#: model_terms:ir.ui.view,arch_db:gima_partner.view_certifications_tree_custom
 msgid "Certifications"
 msgstr ""
 
@@ -159,11 +145,6 @@ msgid "Company Certifications"
 msgstr ""
 
 #. module: gima_partner
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
-msgid "Company Management"
-msgstr ""
-
-#. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout
 msgid "Company Management |"
 msgstr ""
@@ -180,6 +161,7 @@ msgstr ""
 
 #. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_view_certifications
 msgid "Company employee"
 msgstr ""
@@ -192,8 +174,6 @@ msgstr ""
 #. module: gima_partner
 #. odoo-python
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__course_id
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_courses
@@ -388,20 +368,8 @@ msgstr ""
 
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__expiration_date
-msgid "Expiration Date"
-msgstr ""
-
-#. module: gima_partner
 #: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
-msgid "Expiration date"
-msgstr ""
-
-#. module: gima_partner
-#. odoo-python
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
-#, python-format
-msgid "Expiration: 1 month"
+msgid "Expiration Date"
 msgstr ""
 
 #. module: gima_partner
@@ -616,8 +584,6 @@ msgstr ""
 #. module: gima_partner
 #. odoo-python
 #: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_addons/gima_partner/controllers/portal.py:0
-#: code:addons/gima_partner/controllers/portal.py:0
 #: code:addons/gima_partner/controllers/portal.py:0
 #, python-format
 msgid "None"
@@ -636,7 +602,6 @@ msgstr ""
 #. module: gima_partner
 #: model:ir.model.fields,field_description:gima_partner.field_gima_certifications__partner_id
 #: model:ir.model.fields,field_description:gima_partner.field_gima_training__partner_id
-#: model_terms:ir.ui.view,arch_db:gima_partner.portal_training_employee_list
 msgid "Partner"
 msgstr ""
 
@@ -666,6 +631,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:gima_partner.field_res_users__promoter_id
 #: model_terms:ir.ui.view,arch_db:gima_partner.res_partner
 msgid "Promoter"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_my_home
+msgid "Promoter Management"
+msgstr ""
+
+#. module: gima_partner
+#: model_terms:ir.ui.view,arch_db:gima_partner.portal_layout
+msgid "Promoter Management |"
 msgstr ""
 
 #. module: gima_partner

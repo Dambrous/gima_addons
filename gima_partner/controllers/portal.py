@@ -465,30 +465,10 @@ class GimaPortal(portal.CustomerPortal):
 
     def _get_training_searchbar_sortings(self):
         return {
-            "course_id": {"label": _("Course"), "training": "course_id asc"},
-        }, {
-            "none": {"input": "none", "label": _("None")},
             "partner_id": {"input": "partner_id", "label": _("Employee")},
             "course_id": {"input": "course_id", "label": _("Course")}
-        }, {
-            "all": {"label": _("All"), "domain": []},
-            "expiration_1_month: ": {
-                "label": _("Expiration: 1 month"),
-                "domain": [
-                    ("expiration_date", "!=", False),
-                    (
-                        "expiration_date",
-                        "<=",
-                        (datetime.datetime.now() + relativedelta(months=1)).date(),
-                    ),
-                ],
-            },
-        }, {
+        },  {
             "partner": {"input": "partner_id", "label": _("Search in Partner")},
-            # "certificate_number": {
-            #     "input": "certificate_number",
-            #     "label": _("Search in Certification"),
-            # },
         }
 
     def _prepare_company_employees_training_portal_rendering_values(
@@ -506,22 +486,15 @@ class GimaPortal(portal.CustomerPortal):
         model = "gima.training"
         GimaTraining = request.env[model]
 
-        if not sortby:
-            sortby = "course_id"
         if not groupby:
             groupby = "partner_id"
-        if not filterby:
-            filterby = "all"
         if not search_in:
             search_in = "partner_id"
         company = request.env['res.partner'].sudo().browse(kwargs.get("company_id"))
         values = self._prepare_portal_layout_values()
         domain = self._prepare_certification_domain(company)
         # company is a RES.PARTNER with is_company == True
-        searchbar_sortings, searchbar_groupby, searchbar_filters, searchbar_inputs = self._get_training_searchbar_sortings()
-
-        if filterby:
-            domain += searchbar_filters[filterby]["domain"]
+        searchbar_groupby, searchbar_inputs = self._get_training_searchbar_sortings()
 
         type_group_by = searchbar_groupby.get(groupby, {})
         if groupby in ("partner_id", "course_id"):
@@ -529,7 +502,6 @@ class GimaPortal(portal.CustomerPortal):
         else:
             type_group_by = ""
 
-        sort_order = searchbar_sortings[sortby]["training"]
 
         # search
         if search and search_in:
@@ -574,16 +546,14 @@ class GimaPortal(portal.CustomerPortal):
             page=page,
             step=20,
             url_args={
-                "sortby": sortby,
                 "search_in": search_in,
                 "search": search,
                 "groupby": groupby,
-                "filterby": filterby,
             },
         )
 
         gima_employee_training = GimaTraining.sudo().search(
-            domain, order=sort_order, limit=20, offset=pager_values["offset"]
+            domain, limit=20, offset=pager_values["offset"]
         )
         if type_group_by:
             types_group_list = [
@@ -601,9 +571,7 @@ class GimaPortal(portal.CustomerPortal):
                 "grouped_training": types_group_list,
                 "pager": pager_values,
                 "default_url": url,
-                "searchbar_sortings": searchbar_sortings,
                 "searchbar_groupby": searchbar_groupby,
-                "searchbar_filters": searchbar_filters,
                 "searchbar_inputs": searchbar_inputs,
                 "sortby": sortby,
                 "groupby": groupby,
@@ -615,8 +583,8 @@ class GimaPortal(portal.CustomerPortal):
 
         return values
 
-    @http.route(["/my/company_management"], type="http", auth="user", website=True)
-    def my_company_management_home(self, **kwargs):
+    @http.route(["/my/promoter_management"], type="http", auth="user", website=True)
+    def my_promoter_management_home(self, **kwargs):
         values = self._prepare_portal_layout_values()
         companies_management = []
         user_partner = request.env.user.partner_id

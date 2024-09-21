@@ -45,7 +45,7 @@
         </t>
     </template>
 
-    <template id="portal_promoter_my_company" name="Employees Formation">
+    <template id="portal_promoter_my_company" name="Gestione Formazione">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -69,11 +69,11 @@
             <table class="table table-sm">
                 <thead class="bg-100" style="border: 2px solid #2f2f6d;">
                     <tr class="active">
-                        <th class="text-center">Partner</th>
+                        <th class="text-center">Company employee</th>
                         <th class="text-left">Macro Group Course</th>
                         <th class="text-left">Course</th>
                         <th class="text-center">Data of issue</th>
-                        <th class="text-center">Expiration date</th>
+                        <th class="text-center">Expiration Date</th>
                         <th class="text-center">State</th>
                         <th class="text-center">Download Certificate</th>
                         <th/>
