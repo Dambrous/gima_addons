@@ -42,11 +42,6 @@
                         <field name="commission_percentage" invisible="is_promoter == False"/>
                     </group>
                 </page>
-                <page string="Additional Info(Fgas)" invisible="is_company == True">
-                    <group string="Info Dates Fgas">
-                        <field name="expire_fgas_company_date"/>
-                    </group>
-                </page>
             </xpath>
             <xpath expr="//group[1]/group[1]" position="inside">
                 <field name="promoter_id" domain="[('is_promoter', '=', True)]" invisible="is_company != True"/>
