@@ -12,6 +12,7 @@ class ResPartner(models.Model):
     promoter_id = fields.Many2one('res.partner')
     commission_percentage = fields.Float(string="Commission Percentage")
     gima_macro_course_ids = fields.Many2many('gima.macro.course')
+    expire_fgas_company_date = fields.Date()
 
     def action_view_employee_certifications(self):
         certifications = self.env["gima.certifications"].search(
