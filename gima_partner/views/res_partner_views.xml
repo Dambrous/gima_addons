@@ -45,6 +45,8 @@
                 <page string="Additional Info(Fgas)">
                     <group string="Info Dates Fgas">
                         <field name="expire_fgas_company_date"/>
+                        <field name="expire_fgas_year"/>
+                        <field name="number_fgas_certificate"/>
                     </group>
                 </page>
             </xpath>

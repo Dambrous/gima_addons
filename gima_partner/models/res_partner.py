@@ -13,6 +13,8 @@ class ResPartner(models.Model):
     commission_percentage = fields.Float(string="Commission Percentage")
     gima_macro_course_ids = fields.Many2many('gima.macro.course')
     expire_fgas_company_date = fields.Date()
+    expire_fgas_year = fields.Char()
+    number_fgas_certificate = fields.Char()
 
     def action_view_employee_certifications(self):
         certifications = self.env["gima.certifications"].search(
@@ -39,3 +41,10 @@ class ResPartner(models.Model):
             "view_mode": "tree",
             "domain": [("id", "in", trainings.ids)],
         }
+
+    @api.onchange('expire_fgas_company_date')
+    def _onchange_expire_fgas_company_date(self):
+        if self.expire_fgas_company_date:
+            self.expire_fgas_year = self.expire_fgas_company_date.year
+        else:
+            self.expire_fgas_year = False
